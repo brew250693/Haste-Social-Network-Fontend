@@ -4,6 +4,6 @@ export interface User {
   password?:String;
   email?:String;
   phone?:String;
-  birthday?:String;
+  birthday?:Date;
   city?:String
 }

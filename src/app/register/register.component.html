@@ -99,7 +99,7 @@
       <div class="form-group">
         <label for="birthday">Birthday</label>
         <input
-          type="text"
+          type="date"
           class="form-control"
           name="username"
           [(ngModel)]="form.birthday"
@@ -111,7 +111,7 @@
         <div class="alert-danger" *ngIf="birthday.errors && f.submitted">
           <div *ngIf="birthday.errors.required">Birthday is required</div>
           <div *ngIf="birthday.errors.minlength">
-            Birthday must be at least 3 characters
+            Birthday format dd/mm/yyyy
           </div>
           <div *ngIf="birthday.errors.maxlength">
             Birthday must be at most 20 characters
