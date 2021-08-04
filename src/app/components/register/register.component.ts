@@ -15,10 +15,14 @@ export class RegisterComponent implements OnInit {
   userForm : FormGroup = new FormGroup({
     username: new FormControl(),
     password: new FormControl(),
+    confirmPassword: new FormControl(),
    email: new FormControl(),
    phone: new FormControl(),
     birthday: new FormControl(),
-    city: new FormControl()
+    address: new FormControl(),
+    city: new FormControl(),
+    profilePicUrl: new FormControl(),
+    backgroundImageUrl : new FormControl()
   })
 
   constructor(private authenticationService: AuthenticationService,

@@ -38,11 +38,16 @@
               </div>
               <form class="we-form" method="post" [formGroup]="userForm" (ngSubmit)="register()" >
                 <input type="text" placeholder="Username"  formControlName="username">
-                <input type="password" placeholder="Password"  formControlName="password">
+
                 <input type="text" placeholder="Email"  formControlName="email">
                 <input type="text" placeholder="+1234-567-987"  formControlName="phone">
                 <input type="date" placeholder="Birthday"  formControlName="birthday">
-                <input type="text" placeholder="Address"  formControlName="city">
+                <input type="text" placeholder="Address"  formControlName="address">
+                <input type="text" placeholder="City"  formControlName="city">
+                <input type="hidden"  formControlName="profilePicUrl">
+                <input type="hidden"  formControlName="backgroundImageUrl">
+                <input type="password" placeholder="Password"  formControlName="password">
+                <input type="password" placeholder="confirmPassword"  formControlName="confirmPassword">
                 <!--                                    <input type="checkbox"><label>Send code to Mobile</label>-->
                 <button type="submit" data-ripple="">Register</button>
                 <!--                                    <a class="forgot underline" href="#" title="">forgot password?</a>-->
