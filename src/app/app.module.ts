@@ -28,7 +28,8 @@ import {ErrorInterceptor} from "./helper/error-interceptor";
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ExtendedModule
+    ExtendedModule,
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

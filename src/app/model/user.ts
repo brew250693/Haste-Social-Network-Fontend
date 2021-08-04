@@ -1,5 +1,6 @@
 export interface User {
-  id?:number;
+  // chwa sua
+  id?:String;
   username?:String;
   password?:String;
   email?:String;

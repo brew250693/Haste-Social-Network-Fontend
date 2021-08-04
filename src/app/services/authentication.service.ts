@@ -5,8 +5,9 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 import { User } from '../model/user';
+import { environment } from 'src/environments/environment';
 
-const URL= 'http://localhost:8080/api/auth'
+const URL= `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(URL + '/signin', {username, password})
+    return this.http.post<any>(URL + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
@@ -32,7 +33,7 @@ export class AuthenticationService {
   }
 
   register(data: User): Observable<User> {
-    return this.http.post(URL + '/signup', data);
+    return this.http.post(URL + '/users/register', data);
   }
 
   get currentUserValue(){

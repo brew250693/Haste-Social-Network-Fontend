@@ -1,10 +1,10 @@
 export interface UserToken {
-  id?:number;
+  id?:String;
   username?:String;
-  password?:String;
   email?:String;
   phone?:String;
-  birthday?:Date;
+  birthday?:String;
+  address?:String;
   city?:String
   roles?:any;
   accessToken?:string
