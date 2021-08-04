@@ -29,6 +29,7 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent
   },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   // {
   //   path: 'mutual-friends/:id',
   //   component: MutualFriendComponent
@@ -41,11 +42,11 @@ const routes: Routes = [
   //   path: 'user/:id/edit',
   //   component: UserEditComponent
   // },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  }
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full',
+  // }
   // {
   //   path: 'user/:id/about',
   //   component: UserInfoComponent
