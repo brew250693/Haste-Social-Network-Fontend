@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
+import {Userlogin} from "../../model/login";
+import {TokenService} from "../../services/token.service";
+import {HomeComponent} from "../home/home.component";
 
 @Component({
   selector: 'app-login',
@@ -9,29 +12,38 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  loginForm : FormGroup = new FormGroup({
+  userlogin: Userlogin;
+  loginForm: FormGroup = new FormGroup({
     username: new FormControl(),
     password: new FormControl()
   })
 
   constructor(private authenticationService: AuthenticationService,
-              private router: Router) { }
+              private router: Router,
+              private tokenService: TokenService) {
+  }
 
   ngOnInit(): void {
   }
 
 
   login() {
-    this.authenticationService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value).subscribe(
-      () => {
-        alert("dang nhap thanh cong")
-        this.router.navigate(['/home'])
+    const data = this.loginForm.value;
+    this.userlogin={
+      username: data.username,
+      password: data.password
+    }
+    this.authenticationService.login(this.userlogin).subscribe(req => {
+        this.tokenService.setToken(req.token);
+        this.tokenService.setId(req.id);
+        this.tokenService.setName(req.name);
+        // this.name = this.tokenService.getName();
+        this.router.navigate(['home']);
 
-      }
-    )
+
+
+    }, error =>{
+      console.log(error)
+    })
   }
-
-
-
 }

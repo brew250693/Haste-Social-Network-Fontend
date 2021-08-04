@@ -7,9 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {JwtInterceptor} from "./helper/jwt-interceptor";
-import {ErrorInterceptor} from "./helper/error-interceptor";
-import { FormControlDirective, FormGroupDirective } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {httpInterceptorProviders} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -17,18 +16,19 @@ import { FormControlDirective, FormGroupDirective } from '@angular/forms';
     RegisterComponent,
     HomeComponent,
     LoginComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule,
+    ReactiveFormsModule
 
   ],
 
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 
 })

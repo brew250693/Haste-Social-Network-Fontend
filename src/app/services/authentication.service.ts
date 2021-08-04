@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 import {User} from "../model/user";
 import {map} from "rxjs/operators";
 
-const URL= 'http://localhost:8080/api/auth'
+const API_URL= 'http://localhost:8080'
 
 @Injectable({
   providedIn: 'root'
@@ -15,34 +15,31 @@ export class AuthenticationService {
   public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
 
-  constructor(private http: HttpClient,
+  constructor(private httpClient: HttpClient,
               private router: Router) {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(<string>localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(URL + '/signin', {username, password})
-      .pipe(map(user => {
-        localStorage.setItem('user', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      }));
+    login(data: any): Observable<any> {
+    console.log("chay qua tokenservice")
+      return this.httpClient.post<any>(API_URL + '/api/auth/signin', data);
+    }
   }
 
-  register(data: User): Observable<User> {
-    return this.http.post(URL + '/signup', data);
-  }
+  // register(data: User): Observable<User> {
+  //   return this.http.post(URL + '/signup', data);
+  // }
 
-  get currentUserValue(){
-    return this.currentUserSubject.value;
-    console.log(this.currentUserSubject.value)
-  }
+  // get currentUserValue(){
+  //   return this.currentUserSubject.value;
+  //   console.log(this.currentUserSubject.value)
+  // }
 
-  logout() {
-    localStorage.removeItem('user')
-
-    this.currentUserSubject.next(null)
+  // logout() {
+  //   localStorage.removeItem('user')
+  //
+  //   this.currentUserSubject.next(null)
     // this.router.navigate(['/login'])
-  }
-}
+  // }
+// }
