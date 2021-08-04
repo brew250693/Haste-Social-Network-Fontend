@@ -6,4 +6,5 @@ export interface User {
   phone?:String;
   birthday?:Date;
   city?:String
+  roles?:any;
 }
