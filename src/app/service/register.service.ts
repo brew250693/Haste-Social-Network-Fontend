@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {IUserRegister} from '../model/IUserRegister';
-import {register} from 'ts-node';
+// import {register} from 'ts-node';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 

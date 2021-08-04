@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {JwtService} from '../service/auth/jwt.service';
+
 import {first} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
+import {JwtService} from "../../service/auth/jwt.service";
 
 @Component({
   selector: 'app-login',

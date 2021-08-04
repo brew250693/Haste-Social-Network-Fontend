@@ -4,7 +4,7 @@ import {IUserToken} from '../../model/IUserToken';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
-const API_URL = `http://localhost:8080/`;
+const API_URL = `http://localhost:8080/api/auth/`;
 @Injectable({
   providedIn: 'root'
 })

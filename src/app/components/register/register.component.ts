@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {IAppUser} from '../model/iappuser';
 import {Router} from '@angular/router';
-import {IUserRegister} from '../model/IUserRegister';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../service/user.service';
-import {RegisterService} from '../service/register.service';
+// import {UserService} from '../service/user.service';
 import {noWhitespaceValidator} from './noWhitespaceValidator';
 import {HttpErrorResponse} from '@angular/common/http';
+import {IUserRegister} from "../../model/IUserRegister";
+import {RegisterService} from "../../service/register.service";
 
 @Component({
   selector: 'app-register',
@@ -17,10 +16,10 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required,noWhitespaceValidator]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('',[Validators.required, Validators.pattern("[0-9 ]{10}")])
+    phone: new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}")]),
+    birthday: new FormControl('', [Validators.required]),
+    city: new FormControl('',[Validators.required])
   });
 
   constructor(private registerService: RegisterService,
@@ -52,10 +51,10 @@ export class RegisterComponent implements OnInit {
     const user: IUserRegister = {
       username: this.registerForm.value.username,
       password: this.registerForm.value.password,
-      firstName: this.registerForm.value.firstName,
-      lastName: this.registerForm.value.lastName,
       email: this.registerForm.value.email,
       phone: this.registerForm.value.phone,
+      birthday: this.registerForm.value.birthday,
+      city: this.registerForm.value.city,
       createdDate: Date.now()
     };
     return user;

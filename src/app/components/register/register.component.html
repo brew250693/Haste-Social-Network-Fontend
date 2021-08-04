@@ -12,6 +12,7 @@
             </div>
             <form class="user" [formGroup]="registerForm" (ngSubmit)="register()">
               <div class="form-group row">
+
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user" id="exampleFirstName"
                          placeholder="Username" formControlName="username">
@@ -27,6 +28,39 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="col-sm-6">
+                  <input type="password" class="form-control form-control-user"
+                         id="examplePassword" placeholder="Password" formControlName="password">
+                  <div
+                    *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                    <div class="alert alert-danger mt-1" role="alert"
+                         *ngIf="registerForm.get('password').errors.minlength">
+                      Password at least 6 characters
+                    </div>
+                    <div class="alert alert-danger mt-1" role="alert"
+                         *ngIf="registerForm.get('password').errors.required">
+                      Password is not blank
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control form-control-user"
+                         id="exampleEmail" placeholder="Email" formControlName="email">
+                  <div
+                    *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+                    <div class="alert alert-danger mt-1" role="alert"
+                         *ngIf="registerForm.get('email').errors.email">
+                      Email is not formatted
+                    </div>
+                    <div class="alert alert-danger mt-1" role="alert"
+                         *ngIf="registerForm.get('email').errors.required">
+                      Email is not blank
+                    </div>
+                  </div>
+                </div>
+
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user" id="examplePhone"
                          placeholder="Phone Number" formControlName="phone">
@@ -47,61 +81,29 @@
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user"
-                         id="exampleFistName" placeholder="First Name" formControlName="firstName">
+                         id="exampleFistName" placeholder="Birthday" formControlName="birthday">
                   <div
-                    *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                    *ngIf="registerForm.get('birthday').invalid && registerForm.get('birthday').touched">
                     <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('firstName').errors.required">
-                      First name is not blank
+                         *ngIf="registerForm.get('birthday').errors.required">
+                      Birthday is not blank
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"
-                         id="exampleLastName" placeholder="Last Name" formControlName="lastName">
+                         id="exampleCity" placeholder="City" formControlName="city">
                   <div
-                    *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                    *ngIf="registerForm.get('city').invalid && registerForm.get('city').touched">
                     <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('lastName').errors.required">
-                      Last name is not blank
+                         *ngIf="registerForm.get('city').errors.required">
+                      City is not blank
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user"
-                         id="exampleEmail" placeholder="Email" formControlName="email">
-                  <div
-                    *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
-                    <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('email').errors.email">
-                      Email is not formatted
-                    </div>
-                    <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('email').errors.required">
-                      Email is not blank
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <input type="password" class="form-control form-control-user"
-                         id="examplePassword" placeholder="Password" formControlName="password">
-                  <div
-                    *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
-                    <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('password').errors.minlength">
-                      Password at least 6 characters
-                    </div>
-                    <div class="alert alert-danger mt-1" role="alert"
-                         *ngIf="registerForm.get('password').errors.required">
-                      Password is not blank
-                    </div>
-                  </div>
-                </div>
               </div>
-
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Register">
             </form>
             <hr>
