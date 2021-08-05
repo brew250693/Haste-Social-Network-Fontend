@@ -8,7 +8,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {httpInterceptorProviders} from "./auth.interceptor";
+import {httpInterceptorProviders} from "./services/auth/auth.interceptor";
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
+import {FriendsComponent} from "./components/friends/friends.component";
+import {ChangepasswordComponent} from "./components/changepassword/changepassword.component";
+
 
 @NgModule({
   declarations: [

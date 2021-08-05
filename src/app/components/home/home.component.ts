@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = {
       id: this.tokenService.getId(),
-      name: this.tokenService.getName()
+      // name: this.tokenService.getName()
     }
   }
 
