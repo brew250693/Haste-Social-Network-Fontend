@@ -47,6 +47,7 @@ export class EditProfileComponent implements OnInit {
         response => {
           alert("Edit success")
           console.log(response);
+          location.reload()
 
         },
         error => {
