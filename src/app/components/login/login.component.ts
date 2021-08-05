@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from "../../services/authentication/authentication.service";
 import {Router} from "@angular/router";
 import {Userlogin} from "../../model/login";
-import {TokenService} from "../../services/token.service";
+import {TokenService} from "../../services/token/token.service";
 import {HomeComponent} from "../home/home.component";
 
 @Component({

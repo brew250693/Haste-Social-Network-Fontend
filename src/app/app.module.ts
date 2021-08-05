@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {httpInterceptorProviders} from "./auth.interceptor";
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import {httpInterceptorProviders} from "./auth.interceptor";
     RegisterComponent,
     HomeComponent,
     LoginComponent,
+    EditProfileComponent,
+    FriendsComponent,
 
 
   ],

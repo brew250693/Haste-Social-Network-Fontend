@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {UserToken} from "../model/user-token";
+import {UserToken} from "../../model/user-token";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {User} from "../model/user";
+import {User} from "../../model/user";
 import {map} from "rxjs/operators";
 
 const API_URL= 'http://localhost:8080'
