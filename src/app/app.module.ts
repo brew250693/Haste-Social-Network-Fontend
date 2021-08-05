@@ -9,16 +9,10 @@ import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ModalModule} from "ngx-bootstrap/modal";
+
 import {httpInterceptorProviders} from "./services/auth/auth.interceptor";
-import {SharedModule} from "primeng/api";
-import {InputTextareaModule} from "primeng/inputtextarea";
-import {MessagesModule} from "primeng/messages";
-import {MessageModule} from "primeng/message";
-import {ButtonModule} from "primeng/button";
-import {RippleModule} from "primeng/ripple";
-import {AccordionModule} from 'primeng/accordion';
-import {ToastrModule} from "ngx-toastr";;
+import {ToastrModule} from "ngx-toastr";
+
 
 
 @NgModule({
@@ -36,16 +30,8 @@ import {ToastrModule} from "ngx-toastr";;
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot(),
     BrowserAnimationsModule,
-    SharedModule,
-    InputTextareaModule,
-    MessagesModule,
-    MessageModule,
-    ButtonModule,
-    RippleModule,
     ToastrModule.forRoot(),
-    AccordionModule,
 
 
   ],

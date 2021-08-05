@@ -3,9 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ResgisterUser} from "../../model/ResgisterUser";
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login/login.service";
-import {BsModalService} from "ngx-bootstrap/modal";
-import {LoginComponent} from "../login/login.component";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-register',
@@ -35,7 +34,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private loginService: LoginService,
-              private modalService: BsModalService) { }
+              ) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({

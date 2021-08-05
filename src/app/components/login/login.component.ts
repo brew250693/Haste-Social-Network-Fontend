@@ -3,8 +3,6 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {TokenService} from "../../services/token/token.service";
 import {LoginService} from "../../services/login/login.service";
-import {BsModalService} from "ngx-bootstrap/modal";
-import {RegisterComponent} from "../register/register.component";
 import Swal from 'sweetalert2';
 
 
@@ -25,7 +23,7 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private loginService: LoginService,
               private tokenService: TokenService,
-              private modalService: BsModalService,
+
 
               ) { }
 
@@ -68,14 +66,5 @@ export class LoginComponent implements OnInit {
       }
     }, error =>{
     });
-  }
-
-  transferRegister() {
-    // @ts-ignore
-    document.querySelector('.modal-backdrop').remove()
-    document.body.classList.remove('modal-open')
-    // @ts-ignore
-    document.querySelector('.login_dialog').remove()
-    this.modalService.show(RegisterComponent);
   }
 }
