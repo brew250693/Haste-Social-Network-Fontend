@@ -8,12 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {httpInterceptorProviders} from "./services/auth/auth.interceptor";
-import {ToastrModule} from "ngx-toastr";
-
-
+import {httpInterceptorProviders} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -21,6 +16,9 @@ import {ToastrModule} from "ngx-toastr";
     RegisterComponent,
     HomeComponent,
     LoginComponent,
+    EditProfileComponent,
+    FriendsComponent,
+    ChangepasswordComponent,
 
 
   ],

@@ -1,24 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
-import {TokenService} from "../../services/token/token.service";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-changepassword',
+  templateUrl: './changepassword.component.html',
+  styleUrls: ['./changepassword.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ChangepasswordComponent implements OnInit {
 
   currentUser: any ;
-
-
-  constructor(private tokenService: TokenService,
-              private userService: UserService,) { }
+  constructor(private userService: UserService,) { }
 
   ngOnInit(): void {
     this.getUserPrincipal();
   }
-
 
   getUserPrincipal(){
     this.userService.getUserPrincipal().subscribe(user =>{
@@ -29,5 +24,6 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       }
   }
+
 
 }
