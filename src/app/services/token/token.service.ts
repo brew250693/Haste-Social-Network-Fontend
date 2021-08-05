@@ -3,21 +3,23 @@ import { Injectable } from '@angular/core';
 
 const tokenKey = "token";
 const idKey = "id";
-const name = "name";
+const usernameKey = "username";
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
   constructor() { }
+
   getToken() {
     return window.sessionStorage.getItem(tokenKey);
   }
+
   setToken(token: string) {
-    console.log("chay qua set token");
     window.sessionStorage.removeItem(tokenKey);
     window.sessionStorage.setItem(tokenKey, token);
   }
+
   getId() {
     return window.sessionStorage.getItem(idKey);
   }
@@ -26,12 +28,13 @@ export class TokenService {
     window.sessionStorage.removeItem(idKey);
     window.sessionStorage.setItem(idKey, id);
   }
-  getName() {
-    return window.sessionStorage.getItem(name);
+
+  getUsername() {
+    return window.sessionStorage.getItem(usernameKey);
   }
 
-  setName(nameCurrent: any) {
-    window.sessionStorage.removeItem(name);
-    window.sessionStorage.setItem(name, nameCurrent);
+  setUsername(username: any) {
+    window.sessionStorage.removeItem(usernameKey);
+    window.sessionStorage.setItem(usernameKey, username);
   }
 }

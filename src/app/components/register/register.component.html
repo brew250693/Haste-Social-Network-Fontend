@@ -1,14 +1,13 @@
 <body>
-<!--<div class="se-pre-con"></div>-->
 <div class="theme-layout">
   <div class="container-fluid pdng0">
     <div class="row merged">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="land-featurearea">
           <div class="land-meta">
-            <h1>HASTE</h1>
+            <h1>Haste</h1>
             <p>
-              haste is free to use for as long as you want with two active projects.
+              Haste is free to use for as long as you want with two active projects.
             </p>
             <div class="friend-logo">
               <span><img src="assets/images/wink.png" alt=""></span>
@@ -18,59 +17,127 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="log-reg-area reg">
-          <h2 class="log-title">Register</h2>
-          <p>
-            Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
-          </p>
-          <form method="post">
-            <div class="form-group">
-              <input type="text" required="required"/>
-              <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
-            </div>
-            <div class="form-group">
-              <input type="text" required="required"/>
-              <label class="control-label" for="input">User Name</label><i class="mtrl-select"></i>
-            </div>
-            <div class="form-group">
-              <input type="password" required="required"/>
-              <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
-            </div>
-<!--            <div class="form-radio">-->
-<!--              <div class="radio">-->
-<!--                <label>-->
-<!--                  <input type="radio" name="radio" checked="checked"/><i class="check-box"></i>Male-->
-<!--                </label>-->
-<!--              </div>-->
-<!--              <div class="radio">-->
-<!--                <label>-->
-<!--                  <input type="radio" name="radio"/><i class="check-box"></i>Female-->
-<!--                </label>-->
-<!--              </div>-->
-<!--            </div>-->
-            <div class="form-group">
-              <input type="text" required="required"/>
-              <label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c29010d05002c">[email&#160;protected]</a></label><i class="mtrl-select"></i>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" checked="checked"/><i class="check-box"></i>Accept Terms & Conditions ?
-              </label>
-            </div>
-            <a href="/" title="" class="already-have">Already have an account</a>
-            <div class="submit-btns">
-              <button class="mtr-btn signup" type="button"><span>Register</span></button>
-            </div>
-          </form>
+        <div class="login-reg-bg">
+          <div class="log-reg-area sign">
+            <h2 class="log-title">Register</h2>
+
+            <form [formGroup]="registerForm">
+
+              <label class="control-label">Username : </label><i class="mtrl-select"></i>
+              <input type="text" placeholder="Enter Your Username" formControlName="username" required>
+
+              <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                Username is required *
+              </div>
+              <div *ngIf="username.errors?.minlength">
+                Username must be at least 6 characters *
+              </div>
+              <div *ngIf="username.errors?.maxlength">
+                Username must be no more than 15 characters *
+              </div>
+
+              <div>
+                <label class="control-label">Email : </label><i class="mtrl-select"></i>
+                <input type="text" placeholder="Enter Your Email" formControlName="email" required>
+                <div *ngIf="check2" class="text-danger">
+                  {{this.error2}}
+                </div>
+                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                  Email is required or malformed *
+                </div>
+
+              </div>
+              <label class="control-label">Phone : </label><i class="mtrl-select"></i>
+              <input type="text" placeholder="Enter Your Phone" formControlName="phone" required>
+              <div>
+              <div class="text-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                Phone is required *
+              </div>
+              <div *ngIf="phone.errors?.minlength">
+                Phone must be at least 10 characters *
+              </div>
+              <div *ngIf="phone.errors?.maxlength">
+                Phone must be no more than 11 characters *
+              </div>
+              <div>
+              </div>
+
+              <label class="control-label">Birthday : </label><i class="mtrl-select"></i>
+              <input type="date" placeholder="Enter Your Birthday" formControlName="birthday" required>
+
+              <div class="text-danger" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched) ">
+                Birthday is required *
+              </div>
+          </div>
+              <label class="control-label">City : </label><i class="mtrl-select"></i>
+              <input type="text" placeholder="Enter Your City" formControlName="city" required>
+              <div>
+              <div class="text-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+                City is required *
+              </div>
+              <div *ngIf="city.errors?.minlength">
+                City must be at least 6 characters *
+              </div>
+              <div *ngIf="city.errors?.maxlength">
+                Username must be no more than 15 characters *
+              </div>
+          </div>
+
+              <div>
+              <label class="control-label">Password : </label><i class="mtrl-select"></i>
+              <input type="password" placeholder="Enter Password" formControlName="password"
+                     required minlength="6"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)" >
+                <div *ngIf="password.errors?.required">
+                  Password is required *
+                </div>
+                <div *ngIf="password.errors?.minlength">
+                  Password must be at least 6 characters *
+                </div>
+              </div>
+
+          </div>
+
+              <div>
+              <label class="control-label">ConfirmPassword : </label><i class="mtrl-select"></i>
+              <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+                     required
+                     [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+              <span class="form_icon">
+                            <i class=" fa_icon form-lock" aria-hidden="true"></i>
+                        </span>
+
+              <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                <div *ngIf="confirmPassword.errors?.required">
+                  Confirm Password is required *
+                </div>
+              </div>
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+              </div>
+              <div class="text-danger"
+                   *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                <div *ngIf="confirmPassword != password">
+                  Password does not match *
+                </div>
+              </div>
+          </div>
+              <div class="submit-btns">
+                <button type="submit" (click)="register()">Register</button>
+                <p>Already Have An Account? <a routerLink="/login">Login here</a></p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="../../ cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/main.min.js"></script>
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="assets/js/main.min.js"></script>
 <script src="assets/js/script.js"></script>
 
 </body>
-
-

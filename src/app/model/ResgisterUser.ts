@@ -1,11 +1,8 @@
-export interface UserToken {
-  id?:number;
+export class ResgisterUser {
   username?:String;
   password?:String;
   email?:String;
   phone?:String;
   birthday?:Date;
-  city?:String
-  roles?:any;
-  accessToken?:string
+  city?:String;
 }

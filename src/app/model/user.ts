@@ -1,3 +1,5 @@
+import {Role} from "./role";
+
 export interface User {
   id?:number;
   username?:String;
@@ -5,6 +7,7 @@ export interface User {
   email?:String;
   phone?:String;
   birthday?:Date;
-  city?:String
-  roles?:any;
+  city?:String;
+  imageUrl?:String;
+  roles?: Role[];
 }
