@@ -6,6 +6,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {FriendsComponent} from "./components/friends/friends.component";
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'edit-profile', component: EditProfileComponent},
+  { path: 'edit-password', component: ChangepasswordComponent},
   { path: 'friends', component: FriendsComponent},
 
 

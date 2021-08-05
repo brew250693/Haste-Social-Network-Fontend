@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {httpInterceptorProviders} from "./auth.interceptor";
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FriendsComponent } from './components/friends/friends.component';
     LoginComponent,
     EditProfileComponent,
     FriendsComponent,
+    ChangepasswordComponent,
 
 
   ],

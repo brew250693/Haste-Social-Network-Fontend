@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
 import {TokenService} from "../../services/token/token.service";
 import {UserService} from "../../services/user/user.service";
 
@@ -18,10 +19,16 @@ export class EditProfileComponent implements OnInit {
   })
 
   constructor(private tokenService: TokenService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private routers: Router) { }
 
   ngOnInit(): void {
     this.getUserPrincipal();
+
+    // this.userForm.controls['phone'].setValue(this.currentUser.phone),
+    // this.userForm.controls['birthday'].setValue(this.currentUser.birthday),
+    // this.userForm.controls['city'].setValue(this.currentUser.city)
   }
 
   getUserPrincipal(){
@@ -34,6 +41,16 @@ export class EditProfileComponent implements OnInit {
       }
   }
 
-  edit() {
+  edit(): void {
+    this.userService.update( this.userForm.value)
+      .subscribe(
+        response => {
+          alert("Edit success")
+          console.log(response);
+
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
