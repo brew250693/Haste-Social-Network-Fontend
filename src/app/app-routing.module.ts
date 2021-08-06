@@ -7,6 +7,7 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {FriendsComponent} from "./components/friends/friends.component";
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import {UploadImageComponent} from "./components/upload-image/upload-image.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'edit-password', component: ChangepasswordComponent},
   { path: 'friends', component: FriendsComponent},
+  // { path: 'img', component: UploadImageComponent},
+  // { path: 'file', component: UploadImageComponent},
 
 
 ];

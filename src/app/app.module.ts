@@ -14,6 +14,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {FriendsComponent} from "./components/friends/friends.component";
 import {ChangepasswordComponent} from "./components/changepassword/changepassword.component";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+
 
 
 @NgModule({
@@ -25,6 +31,9 @@ import {ChangepasswordComponent} from "./components/changepassword/changepasswor
     EditProfileComponent,
     FriendsComponent,
     ChangepasswordComponent,
+    UploadImageComponent,
+    UploadFileComponent,
+
 
 
   ],
@@ -36,6 +45,8 @@ import {ChangepasswordComponent} from "./components/changepassword/changepasswor
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
 
 
   ],
