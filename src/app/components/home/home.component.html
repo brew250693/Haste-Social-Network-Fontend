@@ -1,4 +1,4 @@
-<h1>{{currentUser.name}}vaaasa</h1>
+<!-- <h1>{{currentUser.name}}</h1> -->
 
 <body>
 <div class="theme-layout">
@@ -391,7 +391,7 @@
         </li>
       </ul>
       <div class="user-img">
-        <span><a routerLink="/profile">{{currentUser.name}}</a></span>
+        <span><a routerLink="/profile">{{currentUserToken.username}}</a></span>
 <!--        <img src="assets/images/resources/admin.jpg" alt="">-->
 <!--        <span class="status f-online"></span>-->
 <!--        <div class="user-setting">-->
@@ -585,19 +585,13 @@
                           <img src="assets/images/resources/friend-avatar10.jpg" alt="">
                         </figure>
                         <div class="friend-name">
-                          <ins><a href="time-line.html" title="">Janice Griffith</a></ins>
-                          <span>published: june,2 2018 19:PM</span>
+                          <ins><a routerLink= "/profile" title="">{{currentUserToken.username}}</a></ins>
+                          <span>published: 10:27p</span>
                         </div>
                         <div class="post-meta">
                           <img src="assets/images/resources/user-post.jpg" alt="">
                           <div class="we-video-info">
                             <ul>
-                              <li>
-															<span class="views" data-toggle="tooltip" title="views">
-																<i class="fa fa-eye"></i>
-																<ins>1.2k</ins>
-															</span>
-                              </li>
                               <li>
 															<span class="comment" data-toggle="tooltip" title="Comments">
 																<i class="fa fa-comments-o"></i>
@@ -610,12 +604,7 @@
 																<ins>2.2k</ins>
 															</span>
                               </li>
-                              <li>
-															<span class="dislike" data-toggle="tooltip" title="dislike">
-																<i class="ti-heart-broken"></i>
-																<ins>200</ins>
-															</span>
-                              </li>
+
                               <li class="social-media">
                                 <div class="menu">
                                   <div class="btn trigger"><i class="fa fa-share-alt"></i></div>

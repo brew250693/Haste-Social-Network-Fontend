@@ -7,9 +7,10 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {FriendsComponent} from "./components/friends/friends.component";
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import {DeletePostComponent} from './components/delete-post/delete-post.component'
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'edit-password', component: ChangepasswordComponent},
   { path: 'friends', component: FriendsComponent},
+  { path: 'delete-post/:id' ,component: DeletePostComponent}
 
 
 ];

@@ -1,3 +1,4 @@
+<p>delete-post works!</p>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -526,106 +527,7 @@
 
                 </aside>
               </div><!-- sidebar -->
-              <div class="col-lg-6">
-                <div class="loadMore">
-                  <div class="central-meta item">
-                    <div class="new-postbox">
-                      <figure>
-                        <img src="assets/images/resources/admin2.jpg" alt="">
-                      </figure>
-                      <div class="newpst-input">
-                        <form  [formGroup]="postForm" (ngSubmit)="createPost()">
-                          <textarea formControlName= "description" rows="2" placeholder="write something"></textarea>
-                          <div class="attachments">
-                            <ul>
-                              <li>
-                                <i class="fa fa-image"></i>
-                                <label class="fileContainer">
-                                  <input type="file" formControlName="image" >
-                                </label>
-                              </li>
-                              <li>
-                              <li>
-                                <button type="submit">Post</button>
-                              </li>
-                            </ul>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <!-- list post -->
-                  <div class="central-meta item" *ngFor="let post of postList">
-                    <div class="user-post">
-                      <div class="friend-info">
-                        <figure>
-                          <img src="assets/images/resources/friend-avatar10.jpg" alt="">
-                        </figure>
-                        <div class="friend-name">
-                          <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
-                          <span>{{post.createDate}}</span>
-                        </div>
-                        <div class="description">
-
-                          <p>
-                            {{post.description}}
-
-                          </p>
-                        </div>
-                        <div class="post-meta">
-                          <div class="linked-image align-left">
-                            <a href="#" title=""><img src="{{post.image}}" alt=""></a>
-                          </div>
-
-                          <div class="we-video-info">
-                            <ul>
-                              <li>
-																<span class="comment" data-toggle="tooltip" title="Comments">
-																	<i class="fa fa-comments-o"></i>
-																	<ins>52</ins>
-																</span>
-                              </li>
-                              <li>
-																<span class="like" data-toggle="tooltip" title="like">
-																	<i class="ti-heart"></i>
-																	<ins>2.2k</ins>
-																</span>
-                              </li>
-
-                              <li>
-																<span class="like" data-toggle="tooltip" title="delete">
-                                  <button><i class="ti-trash"  ></i><a [routerLink]="['/delete-post',post.id]" routerLinkActive="router-link-active" >.</a></button>
-																</span>
-                              </li>
-
-                            </ul>
-                            <ul>
-                              <li class="post-comment">
-                                <div class="comet-avatar">
-                                  <img src="assets/images/resources/comet-1.jpg" alt="">
-                                </div>
-                                <div class="post-comt-box">
-
-                                  <form method="post">
-                                    <textarea placeholder="Post your comment"></textarea>
-                                    <div class="add-smiles">
-                                      <span class="em em-expressionless" title="add icon"></span>
-                                    </div>
-                                    <button type="submit"></button>
-                                  </form>
-
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div class="col-lg-3">
                 <aside class="sidebar static">
                   
@@ -791,38 +693,8 @@
 <script src="js/script.js"></script>
 
 
-<!-- xoa -->
-<!-- <script type="text/javascript">
-
-  $(document).on('click', '.delete-post', function (){
-
-      let id = $(this).attr('id');
-      console.log(id);
-      // let data = {
-      //     product: {id: productId},
-
-      // }
-      $.ajax({
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          type: "POST",
-          data: JSON.stringify(id),
-          //tên API
-          url: "localhost8080/api/post/remove/ + `${id}`",
-          //xử lý khi thành công
-          success: function () {
-              alert("Thêm thành công");
-              location.reload()
-          }
-
-      });
-  })
-
-
-</script> -->
 
 </body>
 
 </html>
+

@@ -21,4 +21,9 @@ export class UserService {
   update( data: any): Observable<any> {
     return this.httpClient.post( API_URL +  '/api/user/change/infor', data);
   }
+
+  changerPassword(data: any): Observable<any>{
+    return this.httpClient.post(API_URL + '/api/user/change/password', data)
+  }
+
 }

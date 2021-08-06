@@ -11,12 +11,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private tokenService: TokenService) { }
 
-  currentUser: any ;
+  currentUserToken: any ;
 
   ngOnInit(): void {
-    this.currentUser = {
+    this.currentUserToken = {
       id: this.tokenService.getId(),
-      // name: this.tokenService.getName()
+      username: this.tokenService.getUsername()
     }
   }
 
