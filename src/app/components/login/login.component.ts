@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.tokenService.setToken(res.token);
         this.tokenService.setId(res.id);
         this.tokenService.setUsername(res.username);
-        this.router.navigate(['']).then(() => {
+        this.router.navigate(['/home']).then(() => {
           // window.location.reload();
           this.message = "Login Success"
           Swal.fire({

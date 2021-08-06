@@ -9,7 +9,7 @@ import {FriendsComponent} from "./components/friends/friends.component";
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent},
