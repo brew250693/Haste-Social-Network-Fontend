@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'edit-password', component: ChangepasswordComponent},
   { path: 'friends', component: FriendsComponent},
-  { path: 'delete-post/:id' ,component: DeletePostComponent}
-  // { path: 'img', component: UploadImageComponent},
+  { path: 'delete-post/:id' ,component: DeletePostComponent},
+  { path: 'img', component: UploadImageComponent},
   // { path: 'file', component: UploadImageComponent},
 
 

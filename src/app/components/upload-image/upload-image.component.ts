@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
+import {Image} from "../../model/Image";
+import {UploadService} from "../../services/upload/upload.service";
 
 @Component({
   selector: 'app-upload-image',
@@ -13,7 +15,7 @@ export class UploadImageComponent implements OnInit {
   checkUploadAvatar = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
-  constructor(private afStorage: AngularFireStorage) { }
+  constructor(private afStorage: AngularFireStorage, private imageservice:UploadService) { }
 
   ngOnInit(): void {
   }
@@ -30,14 +32,18 @@ export class UploadImageComponent implements OnInit {
       .then(snapshot => {
         return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
       })
-      .then(downloadURL => { //cHUYEN Value tu component cha sang con
+      .then(downloadURL => { //Chuyen Value tu component cha sang con
         this.downloadURL = downloadURL;
         this.giveURLtoCreate.emit(this.downloadURL);
         this.checkUploadAvatar = false;
+        let image:Image= new Image(downloadURL);
+        this.imageservice.createImg(image).subscribe((succes)=>{
+          alert("Upload thanh cong")
+        })
         return downloadURL;
       })
       .catch(error=>{
-        console.log(`Failed to upload avatar and get link ${error}`);
+        console.log(`Failed to upload image and get link ${error}`);
       })
   }
 }

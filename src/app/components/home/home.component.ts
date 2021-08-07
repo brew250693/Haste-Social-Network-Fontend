@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit {
   isCheckUploadFile = false;
   form: any = {};
   error1: any = {
-    message: "noavatar"
+    message: "No Image"
   }
   error2: any = {
-    message: "nomp3url"
+    message: "No mp3Url"
   }
   success: any = {
-    message: "yes"
+    message: "Yes"
   }
   img: Image;
 
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
         this.status = 'Create success!'
       }
     }, error => {
-      this.status = 'Please login before create Song'
+      this.status = 'Please login before create Img'
     })
   }
   onChangeAvatar($event){
