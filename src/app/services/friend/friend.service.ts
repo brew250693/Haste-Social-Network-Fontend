@@ -21,28 +21,28 @@ listFriend(): Observable<any[]>{
 
 // gui loi moi ket nban
 addFriend(usernameTwo: any): Observable<any>{
-return this.http.post(API_URL + 'api/friend/addFriend', usernameTwo)
+return this.http.post(API_URL + '/api/friend/addFriend', usernameTwo)
 }
 
 //dong y ket ban
 acceptFriend(id: any): Observable<any>{
-  return this.http.post(API_URL + 'api/friend/accept/' + `${id}`, id)
+  return this.http.post(API_URL + '/api/friend/accept/' + `${id}`, id)
 }
 
 // khong chap nhan ket ban
 cancelFriend(id: any): Observable<any>{
-  return this.http.post(API_URL + 'api/friend/cancel/' + `${id}` , id)
+  return this.http.post(API_URL + '/api/friend/cancel/' + `${id}` , id)
 }
 
 // chan ket ban
 blockFriend(id: any): Observable<any>{
-  return this.http.post(API_URL + 'api/friend/block/' + `${id}`, id)
+  return this.http.post(API_URL + '/api/friend/block/' + `${id}`, id)
 }
 
 
 //list nguoi cho xac nhan ket ban
 getFriendAccept(): Observable<any[]>{
-  return this.http.get<any[]>(API_URL + 'api/friend/listAccept')
+  return this.http.get<any[]>(API_URL + '/api/friend/listAccept')
 }
 
 }

@@ -28,7 +28,7 @@ export class PostService {
   }
 
   deletePost(id: any): Observable<any> {
-    return this.httpClient.delete(API_URL + 'api/post/remove/' + `${id}`);
+    return this.httpClient.delete(API_URL + '/api/post/remove/' + `${id}`);
   }
-  
+
 }

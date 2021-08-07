@@ -26,4 +26,8 @@ export class UserService {
     return this.httpClient.post(API_URL + '/api/user/change/password', data)
   }
 
+  getAllUser(): Observable<any[]>{
+    return this.httpClient.get<any[]>(API_URL + '/api/user/allUser');
+  }
+
 }

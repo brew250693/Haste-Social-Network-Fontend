@@ -12,11 +12,14 @@ export class FriendsComponent implements OnInit {
   currentUser: any;
   listFriend: any[]
 
+  listFriendSuggestion: any[];
+
   constructor(private friendService: FriendService,
               private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUserPrincipal()
+    this.getUserPrincipal();
+    this.getListFriendSuggestion();
   }
 
   getListFriend(): void {
@@ -31,6 +34,21 @@ export class FriendsComponent implements OnInit {
         });
   }
 
+
+  getListFriendSuggestion(): void {
+    this.userService.getAllUser()
+      .subscribe(
+        list => {
+          this.listFriendSuggestion = list;
+          console.log(list);
+          console.log(this.listFriendSuggestion)
+        },
+        error => {
+          console.log(error);
+        });
+
+  }
+
   getUserPrincipal(){
     this.userService.getUserPrincipal().subscribe(user =>{
       this.currentUser = user;
@@ -40,6 +58,10 @@ export class FriendsComponent implements OnInit {
       }
 
       // return this.currentUser;
+  }
+
+  addFriend(){
+    // this.friendService.addFriend()
   }
 
 
