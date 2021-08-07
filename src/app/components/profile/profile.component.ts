@@ -28,22 +28,22 @@ formavt: any = {};
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
 
-  //post
-  // postList: any;
-  // currentUser: any ;
-  // name : String;
+
+  // Post
+  postList: any;
+  currentUser: any ;
+  name : String;
 
 
   id: any;
   status: number;
   image: String;
-  // @ts-ignore
-  post : Post = {id:"", description: "", status: "", image:""};
+
+  post : Post = {id:"", description: "", image:""};
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
     image: new FormControl(),
-
   })
 
   constructor(private tokenService: TokenService,
@@ -53,7 +53,6 @@ formavt: any = {};
               private uploadService:UploadService)
   {
     this.getUserPrincipal();
-
   }
 
   ngOnInit(): void {
@@ -62,12 +61,18 @@ formavt: any = {};
   }
 
   ngSubmit(){
-    this.post.description = this.form.name;
-      this.post.image = this.formavt.image;
-      this.postService.createPost(this.post).subscribe(upPost =>{
-        console.log(upPost);
-        this.post = upPost;
-        window.location.reload();
+    // this.post.description = this.form.description;
+    //   this.post.image = this.formavt.image;
+      this.postForm.value.image = this.formavt.image;
+      this.postService.createPost(this.postForm.value).subscribe(upPost =>{
+        this.message = "Post Success"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
+        location.reload();
       })
   };
 
@@ -84,28 +89,6 @@ formavt: any = {};
       }
   }
 
-  createPost(): void {
-    this.postService.createPost( this.postForm.value)
-      .subscribe(
-        response => {
-          this.message = "Post Success"
-          Swal.fire({
-            title:this.message,
-            text:"",
-            icon:"success",
-            confirmButtonColor: "#3bc8e7",
-          })
-
-          console.log(10, this.postForm.value),
-          console.log(response);
-          location.reload()
-
-
-        },
-        error => {
-          console.log(error);
-        });
-  }
   onchangeAvatar(event : any){
     this.formavt.image = event;
   }
@@ -119,45 +102,48 @@ formavt: any = {};
         console.log(error);
       }
   }
-  onFileChaged($event){
-    this.selectedFile = $event.target.files[0];
-  }
 
+  // onFileChaged($event){
+  //   this.selectedFile = $event.target.files[0];
+  // }
+  //
+  //
+  // onUpLoad(){
+  //   this.checkUploadAvatar = true;
+  //   const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
+  //   this.ref = this.afStorage.ref(id);
+  //   this.ref.put(this.selectedFile)
+  //     .then(snapshot => {
+  //       return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
+  //     })
+  //     .then(downloadURL => { //Chuyen Value tu component cha sang con
+  //       this.downloadURL = downloadURL;
+  //       this.giveURLtoCreate.emit(this.downloadURL);
+  //       this.checkUploadAvatar = false;
+  //       let image:Image= new Image(downloadURL);
+  //       this.uploadService.createImg(image).subscribe((succes)=>{
+  //         this.message = "Upload Success"
+  //         Swal.fire({
+  //           title:this.message,
+  //           text:"",
+  //           icon:"success",
+  //           confirmButtonColor: "#3bc8e7",
+  //         })
+  //       })
+  //       return downloadURL;
+  //     })
+  //     .catch(error=>{
+  //       this.message = "Upload Fail"
+  //       Swal.fire({
+  //         title:this.message,
+  //         text:"",
+  //         icon:"error",
+  //         confirmButtonColor: "#3bc8e7",
+  //       })
+  //     })
+  // }
 
-  onUpLoad(){
-    this.checkUploadAvatar = true;
-    const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
-    this.ref = this.afStorage.ref(id);
-    this.ref.put(this.selectedFile)
-      .then(snapshot => {
-        return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
-      })
-      .then(downloadURL => { //Chuyen Value tu component cha sang con
-        this.downloadURL = downloadURL;
-        this.giveURLtoCreate.emit(this.downloadURL);
-        this.checkUploadAvatar = false;
-        let image:Image= new Image(downloadURL);
-        this.uploadService.createImg(image).subscribe((succes)=>{
-          this.message = "Upload Success"
-          Swal.fire({
-            title:this.message,
-            text:"",
-            icon:"success",
-            confirmButtonColor: "#3bc8e7",
-          })
-        })
-        return downloadURL;
-      })
-      .catch(error=>{
-        this.message = "Upload Fail"
-        Swal.fire({
-          title:this.message,
-          text:"",
-          icon:"error",
-          confirmButtonColor: "#3bc8e7",
-        })
-      })
-  }
+  
 }
 
 

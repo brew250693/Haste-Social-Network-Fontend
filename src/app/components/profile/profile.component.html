@@ -533,8 +533,8 @@
                         <img src="assets/images/resources/admin2.jpg" alt="">
                       </figure>
                       <div class="newpst-input">
-                        <form >
-                          <input  type="text" name="description"  #description="ngModel" [(ngModel)]="form.description" rows="2" placeholder="write something"/>
+                        <form [formGroup]="postForm" (ngSubmit)="ngSubmit()" >
+                          <textarea formControlName= "description" rows="2" placeholder="write something"></textarea>
                           <div class="attachments">
                             <ul>
                               <li >
@@ -549,7 +549,7 @@
                                 </label>
                               </li>
                               <li>
-                                <button type="submit"  (click)="ngSubmit()">Post</button>
+                                <button type="submit">Post</button>
                               </li>
                             </ul>
                           </div>
@@ -557,7 +557,6 @@
                       </div>
                     </div>
                   </div>
-
 
                   <!-- list post -->
                   <div class="central-meta item" *ngFor="let post of postList">
@@ -571,17 +570,14 @@
                           <span>{{post.createDate}}</span>
                         </div>
                         <div class="description">
-
                           <p>
                             {{post.description}}
-
                           </p>
                         </div>
                         <div class="post-meta">
                           <div class="linked-image align-left">
                             <a href="#" title=""><img src="{{post.image}}" alt=""></a>
                           </div>
-
                           <div class="we-video-info">
                             <ul>
                               <li>

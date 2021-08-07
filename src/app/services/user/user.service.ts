@@ -25,4 +25,7 @@ export class UserService {
   changePassword(data: any): Observable<any>{
     return this.httpClient.post(API_URL + '/api/user/change/password', data);
   }
+  changeAvata(data:any):Observable<any>{
+    return this.httpClient.post(API_URL + '/api/user/change/avatar', data);
+  }
 }
