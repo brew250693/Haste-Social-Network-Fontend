@@ -35,8 +35,6 @@ import { DeletePostComponent } from './components/delete-post/delete-post.compon
     ChangepasswordComponent,
     UploadImageComponent,
     UploadFileComponent,
-
-
     ProfileComponent,
     DeletePostComponent
 
@@ -46,7 +44,6 @@ import { DeletePostComponent } from './components/delete-post/delete-post.compon
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

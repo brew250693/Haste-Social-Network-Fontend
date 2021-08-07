@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { PostService } from 'src/app/services/post/post.service';
 import { UserService } from 'src/app/services/user/user.service';
 import {TokenService} from "../../services/token/token.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   postList: any;
   currentUser: any ;
- 
+  message:string;
   name : String;
 
   postForm: FormGroup= new FormGroup({
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit {
               private postService: PostService) {
 
     this.getUserPrincipal();
-   
+
                }
 
   ngOnInit(): void {
@@ -56,10 +57,18 @@ export class ProfileComponent implements OnInit {
     this.postService.createPost( this.postForm.value)
       .subscribe(
         response => {
-          alert("Post success")
+          this.message = "Post Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
+
           console.log(10, this.postForm.value),
           console.log(response);
           location.reload()
+
 
         },
         error => {
@@ -73,7 +82,7 @@ export class ProfileComponent implements OnInit {
 console.log(110);
     this.postService.getPostByUser(this.name).subscribe(list =>{
         this.postList = list,
-        
+
         console.log(list, 1111)
 
       }),
