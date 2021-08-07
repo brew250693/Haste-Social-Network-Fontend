@@ -428,8 +428,8 @@
                   <h5>{{currentUser.name}}</h5>
                 </li>
                 <li>
-                  <a class="active" href="/profile" data-ripple="">time line</a>
-                  <a  class="" href="/friends" title="" data-ripple="">Friends</a>
+                  <a class="active" [routerLink]="['/profile']" routerLinkActive="router-link-active" data-ripple="">time line</a>
+                  <a  class=""[routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">Friends</a>
                   <a class="" href="/photos" title="" data-ripple="">Photos</a>
                   <a class="" href="videos" title="" data-ripple="">Videos</a>
                   <a class="" href="about.html" title="" data-ripple="">about</a>

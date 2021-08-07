@@ -16,6 +16,8 @@ import {FriendsComponent} from "./components/friends/friends.component";
 import {ChangepasswordComponent} from "./components/changepassword/changepassword.component";
 import { ProfileComponent } from './components/profile/profile.component';
 import { DeletePostComponent } from './components/delete-post/delete-post.component';
+import { FriendsRequestsComponent } from './components/friends-requests/friends-requests.component';
+
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DeletePostComponent } from './components/delete-post/delete-post.compon
     FriendsComponent,
     ChangepasswordComponent,
     ProfileComponent,
-    DeletePostComponent
+    DeletePostComponent,
+    FriendsRequestsComponent,
+
 
   ],
   imports: [
