@@ -398,19 +398,19 @@
       <figure><img src="assets/images/resources/timeline-1.jpg" alt=""></figure>
       <div class="add-btn">
       </div>
-      <form class="edit-phto">
-        <i class="fa fa-camera-retro"></i>
-        <label class="fileContainer">
+      <!-- <form class="edit-phto"> -->
+        <!-- <i class="fa fa-camera-retro"></i> -->
+        <!-- <label class="fileContainer">
           Edit Cover Photo
           <input type="file"/>
-        </label>
-      </form>
+        </label> -->
+      <!-- </form> -->
       <div class="container-fluid">
         <div class="row merged">
           <div class="col-lg-2 col-sm-3">
             <div class="user-avatar">
               <figure>
-                <img src="assets/images/resources/user-avatar.jpg" alt="">
+                <img [src]= "currentUser.image" alt="">
                 <form class="edit-phto">
                   <i class="fa fa-camera-retro"></i>
                   <label class="fileContainer">
@@ -425,15 +425,15 @@
             <div class="timeline-info">
               <ul>
                 <li class="admin-name">
-                  <h5>{{currentUser.name}}</h5>
+                  <h5>{{currentUser.username}}</h5>
                 </li>
                 <li>
                   <a class="active" [routerLink]="['/profile']" routerLinkActive="router-link-active" data-ripple="">time line</a>
                   <a  class=""[routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">Friends</a>
-                  <a class="" href="/photos" title="" data-ripple="">Photos</a>
-                  <a class="" href="videos" title="" data-ripple="">Videos</a>
-                  <a class="" href="about.html" title="" data-ripple="">about</a>
-                  <a class="" href="#" title="" data-ripple="">more</a>
+                  <a class="" [routerLink]="['/photos']" routerLinkActive="router-link-active" title="" data-ripple="">Photos</a>
+                  <a class="" [routerLink]="['/videos']" routerLinkActive="router-link-active" title="" data-ripple="">Videos</a>
+                  <a class="" [routerLink]="['/about']" routerLinkActive="router-link-active" title="" data-ripple="">about</a>
+                  <a class="" [routerLink]="['/more']" routerLinkActive="router-link-active" title="" data-ripple="">more</a>
                 </li>
               </ul>
             </div>
@@ -531,7 +531,7 @@
                   <div class="central-meta item">
                     <div class="new-postbox">
                       <figure>
-                        <img src="assets/images/resources/admin2.jpg" alt="">
+                        <img [src]= "currentUser.image" alt="">
                       </figure>
                       <div class="newpst-input">
                         <form  [formGroup]="postForm" (ngSubmit)="createPost()">
@@ -561,7 +561,7 @@
                     <div class="user-post">
                       <div class="friend-info">
                         <figure>
-                          <img src="assets/images/resources/friend-avatar10.jpg" alt="">
+                          <img [src]="post.user.image" alt="">
                         </figure>
                         <div class="friend-name">
                           <ins><a href="/profile" title="">{{post.user.username}}</a></ins>

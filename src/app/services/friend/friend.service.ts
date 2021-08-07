@@ -20,8 +20,8 @@ listFriend(): Observable<any[]>{
 }
 
 // gui loi moi ket nban
-addFriend(usernameTwo: any): Observable<any>{
-return this.http.post(API_URL + '/api/friend/addFriend', usernameTwo)
+addFriend(friendRequest: any): Observable<any>{
+return this.http.post(API_URL + '/api/friend/addFriend', friendRequest)
 }
 
 //dong y ket ban
