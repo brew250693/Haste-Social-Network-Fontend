@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostService } from 'src/app/services/post/post.service';
 import { UserService } from 'src/app/services/user/user.service';
 import {TokenService} from "../../services/token/token.service";
 import Swal from "sweetalert2";
+import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
+import {Image} from "../../model/Image";
+import {UploadService} from "../../services/upload/upload.service";
+import {Post} from "../../model/post";
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +16,29 @@ import Swal from "sweetalert2";
 })
 export class ProfileComponent implements OnInit {
 
-  postList: any;
-  currentUser: any ;
+form : any = {};
+formavt: any = {};
+
+  // Upload
   message:string;
-  name : String;
+  selectedFile: File;
+  ref: AngularFireStorageReference;
+  downloadURL: string;
+  checkUploadAvatar = false;
+  @Output()
+  giveURLtoCreate = new EventEmitter<string>();
+
+  //post
+  // postList: any;
+  // currentUser: any ;
+  // name : String;
+
+
+  id: any;
+  status: number;
+  image: String;
+  // @ts-ignore
+  post : Post = {id:"", description: "", status: "", image:""};
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
@@ -25,17 +48,28 @@ export class ProfileComponent implements OnInit {
 
   constructor(private tokenService: TokenService,
               private userService: UserService,
-              private postService: PostService) {
-
+              private postService: PostService,
+              private afStorage: AngularFireStorage,
+              private uploadService:UploadService)
+  {
     this.getUserPrincipal();
 
-               }
+  }
 
   ngOnInit(): void {
 //  this.getUserPrincipal();
     // this.allPost();
-
   }
+
+  ngSubmit(){
+    this.post.description = this.form.name;
+      this.post.image = this.formavt.image;
+      this.postService.createPost(this.post).subscribe(upPost =>{
+        console.log(upPost);
+        this.post = upPost;
+        window.location.reload();
+      })
+  };
 
 
   getUserPrincipal(){
@@ -48,10 +82,7 @@ export class ProfileComponent implements OnInit {
       error => {
         console.log(error);
       }
-
-      // return this.currentUser;
   }
-
 
   createPost(): void {
     this.postService.createPost( this.postForm.value)
@@ -75,20 +106,58 @@ export class ProfileComponent implements OnInit {
           console.log(error);
         });
   }
+  onchangeAvatar(event : any){
+    this.formavt.image = event;
+  }
 
   allPost(){
-    // console.log(111111)
-
-console.log(110);
     this.postService.getPostByUser(this.name).subscribe(list =>{
-        this.postList = list,
-
-        console.log(list, 1111)
+        this.postList = list;
 
       }),
       error => {
         console.log(error);
       }
   }
+  onFileChaged($event){
+    this.selectedFile = $event.target.files[0];
+  }
 
+
+  onUpLoad(){
+    this.checkUploadAvatar = true;
+    const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
+    this.ref = this.afStorage.ref(id);
+    this.ref.put(this.selectedFile)
+      .then(snapshot => {
+        return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
+      })
+      .then(downloadURL => { //Chuyen Value tu component cha sang con
+        this.downloadURL = downloadURL;
+        this.giveURLtoCreate.emit(this.downloadURL);
+        this.checkUploadAvatar = false;
+        let image:Image= new Image(downloadURL);
+        this.uploadService.createImg(image).subscribe((succes)=>{
+          this.message = "Upload Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
+        })
+        return downloadURL;
+      })
+      .catch(error=>{
+        this.message = "Upload Fail"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"error",
+          confirmButtonColor: "#3bc8e7",
+        })
+      })
+  }
 }
+
+

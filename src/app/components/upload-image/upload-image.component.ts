@@ -25,39 +25,55 @@ export class UploadImageComponent implements OnInit {
   //trong $event.target.files
   onFileChaged($event){
     this.selectedFile = $event.target.files[0];
-  }
-  onUpLoad(){
-    this.checkUploadAvatar = true;
+    // this.checkUploadAvatar = true;
     const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
     this.ref = this.afStorage.ref(id);
-    this.ref.put(this.selectedFile)
-      .then(snapshot => {
-        return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
-      })
-      .then(downloadURL => { //Chuyen Value tu component cha sang con
+    this.ref.put(this.selectedFile).then(snapshot => {
+      return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
+    })
+      .then(downloadURL => { //cHUYEN Value tu component cha sang con
         this.downloadURL = downloadURL;
         this.giveURLtoCreate.emit(this.downloadURL);
-        this.checkUploadAvatar = false;
-        let image:Image= new Image(downloadURL);
-        this.uploadService.createImg(image).subscribe((succes)=>{
-          this.message = "Upload Success"
-          Swal.fire({
-            title:this.message,
-            text:"",
-            icon:"success",
-            confirmButtonColor: "#3bc8e7",
-          })
-        })
+        // this.checkUploadAvatar = false;
         return downloadURL;
       })
       .catch(error=>{
-        this.message = "Upload Fail"
-        Swal.fire({
-          title:this.message,
-          text:"",
-          icon:"error",
-          confirmButtonColor: "#3bc8e7",
-        })
+        console.log(`Failed to upload avatar and get link ${error}`);
       })
+    console.log(this.downloadURL)
   }
+  // onUpLoad(){
+  //   this.checkUploadAvatar = true;
+  //   const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
+  //   this.ref = this.afStorage.ref(id);
+  //   this.ref.put(this.selectedFile)
+  //     .then(snapshot => {
+  //       return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
+  //     })
+  //     .then(downloadURL => { //Chuyen Value tu component cha sang con
+  //       this.downloadURL = downloadURL;
+  //       this.giveURLtoCreate.emit(this.downloadURL);
+  //       this.checkUploadAvatar = false;
+  //       let image:Image= new Image(downloadURL);
+  //       this.uploadService.createImg(image).subscribe((succes)=>{
+  //         this.message = "Upload Success"
+  //         Swal.fire({
+  //           title:this.message,
+  //           text:"",
+  //           icon:"success",
+  //           confirmButtonColor: "#3bc8e7",
+  //         })
+  //       })
+  //       return downloadURL;
+  //     })
+  //     .catch(error=>{
+  //       this.message = "Upload Fail"
+  //       Swal.fire({
+  //         title:this.message,
+  //         text:"",
+  //         icon:"error",
+  //         confirmButtonColor: "#3bc8e7",
+  //       })
+  //     })
+  // }
 }

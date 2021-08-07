@@ -533,19 +533,23 @@
                         <img src="assets/images/resources/admin2.jpg" alt="">
                       </figure>
                       <div class="newpst-input">
-                        <form  [formGroup]="postForm" (ngSubmit)="createPost()">
-                          <textarea formControlName= "description" rows="2" placeholder="write something"></textarea>
+                        <form >
+                          <input  type="text" name="description"  #description="ngModel" [(ngModel)]="form.description" rows="2" placeholder="write something"/>
                           <div class="attachments">
                             <ul>
-                              <li>
+                              <li >
                                 <i class="fa fa-image"></i>
-                                <label class="fileContainer">
-                                  <input type="file" formControlName="image" >
+                                <label class="fileContainer" >
+                                  <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)" ></app-upload-image>
+<!--                                  <input type="file" formControlName="image" (change)="onFileChaged($event)">-->
+<!--                                  <button *ngIf="downloadURL?!selectedFile:selectedFile" color="accent" (click)="onUpLoad()">Upload Image</button>-->
+<!--                                  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">-->
+<!--                                    <img [src]="downloadURL" style="width: 300px; height: auto">-->
+<!--                                  </div>-->
                                 </label>
                               </li>
                               <li>
-                              <li>
-                                <button type="submit">Post</button>
+                                <button type="submit"  (click)="ngSubmit()">Post</button>
                               </li>
                             </ul>
                           </div>
