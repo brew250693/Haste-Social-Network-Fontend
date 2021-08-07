@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
 import {Image} from "../../model/Image";
 import {UploadService} from "../../services/upload/upload.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-upload-image',
@@ -9,13 +10,14 @@ import {UploadService} from "../../services/upload/upload.service";
   styleUrls: ['./upload-image.component.scss']
 })
 export class UploadImageComponent implements OnInit {
+  message:string;
   selectedFile: File;
   ref: AngularFireStorageReference;
   downloadURL: string;
   checkUploadAvatar = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
-  constructor(private afStorage: AngularFireStorage, private imageservice:UploadService) { }
+  constructor(private afStorage: AngularFireStorage, private uploadService:UploadService) { }
 
   ngOnInit(): void {
   }
@@ -37,13 +39,25 @@ export class UploadImageComponent implements OnInit {
         this.giveURLtoCreate.emit(this.downloadURL);
         this.checkUploadAvatar = false;
         let image:Image= new Image(downloadURL);
-        this.imageservice.createImg(image).subscribe((succes)=>{
-          alert("Upload thanh cong")
+        this.uploadService.createImg(image).subscribe((succes)=>{
+          this.message = "Upload Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
         })
         return downloadURL;
       })
       .catch(error=>{
-        console.log(`Failed to upload image and get link ${error}`);
+        this.message = "Upload Fail"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"error",
+          confirmButtonColor: "#3bc8e7",
+        })
       })
   }
 }

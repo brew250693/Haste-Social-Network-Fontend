@@ -45,24 +45,20 @@ export class ChangepasswordComponent implements OnInit {
   getUserPrincipal(){
     this.userService.getUserPrincipal().subscribe(user =>{
       this.currentUser = user;
-      console.log(this.currentUser);
     }),
       error => {
-        console.log(error);
       }
   }
 
   changePassword() {
     const data = this.changePasswordForm.value;
-    console.log( "1 data "+data);
     this.requestPassword = {
       currentPassword: data.currentPassword,
       newPassword: data.newPassword
     };
 
-    console.log("2  da nhan "+this.requestPassword);
+
     this.userService.changePassword(this.requestPassword).subscribe(mes => {
-      console.log("done"+this.requestPassword);
       this.message = "Change Password Success"
       Swal.fire({
         title:this.message,
@@ -73,7 +69,13 @@ export class ChangepasswordComponent implements OnInit {
       // alert(this.messageResponse.message.message);
     },
       error => {
-        console.log(this.requestPassword + "loi");
+        this.message = "Change Password Fail"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"error",
+          confirmButtonColor: "#3bc8e7",
+        });
       }
     );
 
@@ -106,8 +108,4 @@ export class ChangepasswordComponent implements OnInit {
       }
     }
   }
-
-  // backHome() {
-  //   this.router.navigate(['home']);
-  // }
 }

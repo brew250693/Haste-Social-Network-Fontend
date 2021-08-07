@@ -1,8 +1,8 @@
 <div>
   <input type="file" (change)="onFileChaged($event)"><br>
   <!-- Khi nao thuc hien upload thi button nay moi hien, con co URL tuc upload thanh cong thi button nay an di-->
-  <button *ngIf="downloadURL?!selectedFile:selectedFile" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-success" (click)="onUpLoad()">Upload Avatar
-  </button>
+  <button *ngIf="downloadURL?!selectedFile:selectedFile" color="accent" (click)="onUpLoad()">Upload Image</button>
+
   <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
     <img [src]="downloadURL" style="width: 300px; height: auto">
   </div>
