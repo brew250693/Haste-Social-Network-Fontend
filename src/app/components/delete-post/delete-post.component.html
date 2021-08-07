@@ -1,4 +1,3 @@
-<p>delete-post works!</p>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -527,10 +526,60 @@
 
                 </aside>
               </div><!-- sidebar -->
-              
+              <div class="col-lg-6">
+                <div class="loadMore">
+                  <form action="">
+                    <div class="central-meta item" >
+                      <div class="user-post">
+                        <div class="friend-info">
+                          <figure>
+                            <img src="assets/images/resources/friend-avatar10.jpg" alt="">
+                          </figure>
+                          <div class="friend-name">
+                            <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
+                            <span>{{post.createDate}}</span>
+                          </div>
+                          <div class="description">
+
+                            <p>
+                              {{post.description}}
+
+                            </p>
+                          </div>
+                          <div class="post-meta">
+                            <div class="linked-image align-left">
+                              <a href="#" title=""><img src="{{post.image}}" alt=""></a>
+                            </div>
+
+                            <div class="we-video-info">
+                              <ul>
+                                <li>
+                                  <span class="comment" data-toggle="tooltip" title="Comments">
+                                    <i class="fa fa-comments-o"></i>
+                                    <ins>52</ins>
+                                  </span>
+                                </li>
+                                <li>
+                                  <span class="like" data-toggle="tooltip" title="like">
+                                    <i class="ti-heart"></i>
+                                    <ins>2.2k</ins>
+                                  </span>
+                                </li>
+                              </ul>
+                              <button type= submit (click)="deletePost()">Delete</button>&nbsp;
+                              <button (click)="exit()">Huy</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
               <div class="col-lg-3">
                 <aside class="sidebar static">
-                  
+
                 </aside>
               </div>
             </div>
@@ -697,4 +746,3 @@
 </body>
 
 </html>
-

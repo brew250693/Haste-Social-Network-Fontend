@@ -22,4 +22,13 @@ export class PostService {
   getPostByUser(username: String) : Observable<any>{
     return this.httpClient.get<any[]>(API_URL + '/api/post/getpost/' + `${username}`)
   }
+
+  getPostById(id: any): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/post/getPost/' + `${id}`)
+  }
+
+  deletePost(id: any): Observable<any> {
+    return this.httpClient.delete(API_URL + 'api/post/remove/' + `${id}`);
+  }
+  
 }
