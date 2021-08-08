@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             text:"Welcome back",
             icon:"success",
             confirmButtonColor: "#3bc8e7",
-
           })
         });
         document.querySelector('.modal-backdrop').remove()

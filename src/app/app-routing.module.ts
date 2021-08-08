@@ -9,6 +9,7 @@ import {FriendsComponent} from "./components/friends/friends.component";
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 import {UploadImageComponent} from "./components/upload-image/upload-image.component";
 import {DeletePostComponent} from './components/delete-post/delete-post.component'
+import {LogOutComponent} from "./components/log-out/log-out.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'friends', component: FriendsComponent},
   { path: 'delete-post/:id' ,component: DeletePostComponent},
   { path: 'img', component: UploadImageComponent},
+  { path: 'logout', component: LogOutComponent},
+
   // { path: 'file', component: UploadImageComponent},
 
 

@@ -22,6 +22,16 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { DeletePostComponent } from './components/delete-post/delete-post.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -36,7 +46,9 @@ import { DeletePostComponent } from './components/delete-post/delete-post.compon
     UploadImageComponent,
     UploadFileComponent,
     ProfileComponent,
-    DeletePostComponent
+    DeletePostComponent,
+    LogOutComponent,
+    LogOutComponent,
 
   ],
   imports: [
@@ -48,8 +60,19 @@ import { DeletePostComponent } from './components/delete-post/delete-post.compon
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
 
+    // Material
+
+    MatNativeDateModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatIconModule,
 
   ],
 

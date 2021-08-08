@@ -11,7 +11,7 @@ const API_URL = `${environment.API_URL}`;
   providedIn: 'root'
 })
 export class LoginService {
-
+  isAuthenticated = false;
   constructor(private httpClient: HttpClient) { }
 
   login(data: any): Observable<any> {
@@ -20,5 +20,9 @@ export class LoginService {
 
   register(user: User): Observable<any>{
     return this.httpClient.post<any>(API_URL + '/api/auth/signup', user);
+  }
+  logout(): void {
+    localStorage.clear();
+    this.isAuthenticated = false;
   }
 }

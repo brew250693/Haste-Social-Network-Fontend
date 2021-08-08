@@ -5,9 +5,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import {TokenService} from "../../services/token/token.service";
 import Swal from "sweetalert2";
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
-import {Image} from "../../model/Image";
 import {UploadService} from "../../services/upload/upload.service";
-import {Post} from "../../model/post";
+
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
 form : any = {};
 formavt: any = {};
+formmp3: any = {};
 
   // Upload
   message:string;
@@ -35,15 +35,16 @@ formavt: any = {};
   name : String;
 
 
-  id: any;
-  status: number;
-  image: String;
-
-  post : Post = {id:"", description: "", image:""};
+  // id: any;
+  // status: number;
+  // image: String;
+  //
+  // post : Post = {id:"", description: "", image:""};
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
     image: new FormControl(),
+    mp3url: new FormControl(),
   })
 
   constructor(private tokenService: TokenService,
@@ -56,14 +57,13 @@ formavt: any = {};
   }
 
   ngOnInit(): void {
-//  this.getUserPrincipal();
-    // this.allPost();
   }
 
   ngSubmit(){
     // this.post.description = this.form.description;
     //   this.post.image = this.formavt.image;
       this.postForm.value.image = this.formavt.image;
+      this.postForm.value.mp3url = this.formmp3.image
       this.postService.createPost(this.postForm.value).subscribe(upPost =>{
         this.message = "Post Success"
         Swal.fire({
@@ -91,6 +91,10 @@ formavt: any = {};
 
   onchangeAvatar(event : any){
     this.formavt.image = event;
+  }
+
+  onFileChaged(event : any){
+    this.formmp3.mp3url = event;
   }
 
   allPost(){
@@ -143,7 +147,7 @@ formavt: any = {};
   //     })
   // }
 
-  
+
 }
 
 
