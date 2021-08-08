@@ -32,6 +32,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {MatIconModule} from "@angular/material/icon";
     DeletePostComponent,
     LogOutComponent,
     LogOutComponent,
+    CommentFormComponent,
 
   ],
   imports: [

@@ -60,8 +60,6 @@ formmp3: any = {};
   }
 
   ngSubmit(){
-    // this.post.description = this.form.description;
-    //   this.post.image = this.formavt.image;
       this.postForm.value.image = this.formavt.image;
       this.postForm.value.mp3url = this.formmp3.image
       this.postService.createPost(this.postForm.value).subscribe(upPost =>{
@@ -146,7 +144,6 @@ formmp3: any = {};
   //       })
   //     })
   // }
-
 
 }
 
