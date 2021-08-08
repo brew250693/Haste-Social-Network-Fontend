@@ -22,33 +22,39 @@
             <h2 class="log-title">Register</h2>
 
             <form [formGroup]="registerForm">
-
-              <label class="control-label">Username : </label><i class="mtrl-select"></i>
-              <input type="text" placeholder="Enter Your Username" formControlName="username" required>
-
-              <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
-                Username is required *
-              </div>
-              <div *ngIf="username.errors?.minlength">
-                Username must be at least 6 characters *
-              </div>
-              <div *ngIf="username.errors?.maxlength">
-                Username must be no more than 15 characters *
-              </div>
-
-              <div>
-                <label class="control-label">Email : </label><i class="mtrl-select"></i>
-                <input type="text" placeholder="Enter Your Email" formControlName="email" required>
-                <div *ngIf="check2" class="text-danger">
-                  {{this.error2}}
+              <table>
+                <tr>
+                  <th><label class="control-label">Username : </label><i class="mtrl-select"></i></th>
+                  <td><input type="text" placeholder="Enter Your Username" formControlName="username" required></td>
+                </tr>
+                <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                  Username is required *
                 </div>
-                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                  Email is required or malformed *
+                <div *ngIf="username.errors?.minlength">
+                  Username must be at least 6 characters *
+                </div>
+                <div *ngIf="username.errors?.maxlength">
+                  Username must be no more than 15 characters *
                 </div>
 
-              </div>
-              <label class="control-label">Phone : </label><i class="mtrl-select"></i>
-              <input type="text" placeholder="Enter Your Phone" formControlName="phone" required>
+                <tr>
+                  <th><label class="control-label">Email : </label><i class="mtrl-select"></i></th>
+                  <td><input type="text" placeholder="Enter Your Email" formControlName="email" required></td><br>
+                </tr>
+                <div>
+                  <div *ngIf="check2" class="text-danger">
+                    {{this.error2}}
+                     </div>
+                     <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                       Email is required or malformed *
+                     </div>
+                </div>
+
+                <tr>
+                  <th><label class="control-label">Phone : </label><i class="mtrl-select"></i></th>
+                  <td><input type="text" placeholder="Enter Your Phone" formControlName="phone" required></td>
+                </tr>
+
               <div>
               <div class="text-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
                 Phone is required *
@@ -59,18 +65,21 @@
               <div *ngIf="phone.errors?.maxlength">
                 Phone must be no more than 11 characters *
               </div>
-              <div>
-              </div>
 
-              <label class="control-label">Birthday : </label><i class="mtrl-select"></i>
-              <input type="date" placeholder="Enter Your Birthday" formControlName="birthday" required>
+              <tr>
+                <th><label class="control-label">Birthday : </label><i class="mtrl-select"></i></th>
+                <td><input type="date" placeholder="Enter Your Birthday" formControlName="birthday" required></td>
+              </tr>
 
               <div class="text-danger" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched) ">
                 Birthday is required *
               </div>
           </div>
-              <label class="control-label">City : </label><i class="mtrl-select"></i>
-              <input type="text" placeholder="Enter Your City" formControlName="city" required>
+
+              <tr>
+                <th><label class="control-label">City : </label><i class="mtrl-select"></i></th>
+                <td> <input type="text" placeholder="Enter Your City" formControlName="city" required></td>
+              </tr>
               <div>
               <div class="text-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
                 City is required *
@@ -79,15 +88,21 @@
                 City must be at least 6 characters *
               </div>
               <div *ngIf="city.errors?.maxlength">
-                Username must be no more than 15 characters *
+                City must be no more than 15 characters *
               </div>
           </div>
 
-              <div>
-              <label class="control-label">Password : </label><i class="mtrl-select"></i>
-              <input type="password" placeholder="Enter Password" formControlName="password"
+
+          <tr>
+            <th><label class="control-label">Password : </label><i class="mtrl-select"></i></th>
+            <td> <input type="password" placeholder="Enter Password" formControlName="password"
                      required minlength="6"
-                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></td>
+          </tr>
+
+              <div>
+
+
               <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)" >
                 <div *ngIf="password.errors?.required">
                   Password is required *
@@ -99,15 +114,16 @@
 
           </div>
 
-              <div>
-              <label class="control-label">ConfirmPassword : </label><i class="mtrl-select"></i>
-              <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+          <tr>
+            <th><label class="control-label">ConfirmPassword : </label><i class="mtrl-select"></i></th>
+            <td><input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
                      required
-                     [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-              <span class="form_icon">
+                     [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"></td>
+          </tr>
+              <div>
+<span class="form_icon">
                             <i class=" fa_icon form-lock" aria-hidden="true"></i>
                         </span>
-
               <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
                 <div *ngIf="confirmPassword.errors?.required">
                   Confirm Password is required *
@@ -125,9 +141,10 @@
               </div>
           </div>
               <div class="submit-btns">
-                <button type="submit" (click)="register()">Register</button>
+                <button type="submit" (click)="register()">Register</button><br>
                 <p>Already Have An Account? <a routerLink="/login">Login here</a></p>
               </div>
+            </table>
             </form>
           </div>
         </div>

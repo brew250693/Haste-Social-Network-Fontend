@@ -103,7 +103,18 @@ export class FriendsComponent implements OnInit {
   }
 
   unFriend(id: any){
+    console.log(id)
+    this.friendService.unFriend(id)
+    .subscribe(
+      response => {
+        alert("unfrien thanh cong")
+        this.routers.navigate(['/friends'])
+        console.log(response);
 
+      },
+      error => {
+        console.log(error);
+      });
 
   }
   block(id:any){

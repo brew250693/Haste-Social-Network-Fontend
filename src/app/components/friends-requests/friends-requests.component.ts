@@ -79,4 +79,34 @@ export class FriendsRequestsComponent implements OnInit {
 
   }
 
+  acceptFriend(id:any){
+    console.log(id)
+    this.friendService.acceptFriend(id)
+    .subscribe(
+      response => {
+        alert("xac nhan thanh cong")
+        // this.routers.navigate(['/friends'])
+        console.log(response);
+
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  cancel(id:any){
+    console.log(id)
+    this.friendService.cancelFriend(id)
+    .subscribe(
+      response => {
+        alert("huy xac nhan thanh cong")
+        // this.routers.navigate(['/friends'])
+        console.log(response);
+
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
 }

@@ -39,6 +39,9 @@ blockFriend(id: any): Observable<any>{
   return this.http.post(API_URL + '/api/friend/block/' + `${id}`, id)
 }
 
+unFriend(id: any): Observable<any>{
+  return this.http.post(API_URL + '/api/friend/unfriend/' + `${id}`, id)
+}
 
 //list nguoi cho xac nhan ket ban
 getFriendAccept(): Observable<any[]>{
