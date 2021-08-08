@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.tokenService.setToken(res.token);
         this.tokenService.setId(res.id);
         this.tokenService.setUsername(res.username);
-        this.router.navigate(['home']).then(() => {
+        this.router.navigate(['/home']).then(() => {
           // window.location.reload();
           this.message = "Login Success"
           Swal.fire({
@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             text:"Welcome back",
             icon:"success",
             confirmButtonColor: "#3bc8e7",
-
           })
         });
         document.querySelector('.modal-backdrop').remove()
