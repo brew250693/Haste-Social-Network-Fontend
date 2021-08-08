@@ -14,6 +14,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {FriendsComponent} from "./components/friends/friends.component";
 import {ChangepasswordComponent} from "./components/changepassword/changepassword.component";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
@@ -33,8 +35,6 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
-import {AngularFireStorageModule} from "@angular/fire/storage";
-import {AngularFireModule} from "@angular/fire";
 
 
 @NgModule({
@@ -63,7 +63,6 @@ import {AngularFireModule} from "@angular/fire";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
