@@ -405,7 +405,7 @@
           </li>
         </ul>
         <div class="user-img">
-          <!-- <img [src]="currentUser.image" alt=""> -->
+          <img src="images/resources/admin.jpg" alt="">
           <span class="status f-online"></span>
           <div class="user-setting">
             <a href="#" title=""><span class="status f-online"></span>online</a>
@@ -426,7 +426,8 @@
         <div class="feature-photo">
           <figure><img src="assets/images/resources/timeline-1.jpg" alt=""></figure>
           <div class="add-btn">
-
+            <!-- <span>1205 followers</span> -->
+            <!-- <a href="#" title="" data-ripple="">Add Friend</a> -->
           </div>
           <form class="edit-phto">
             <i class="fa fa-camera-retro"></i>
@@ -540,25 +541,26 @@
                     <div class="frnds">
                       <ul class="nav nav-tabs">
                          <li class="nav-item"><a class="" [routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">My Friends</a></li>
-                         <li class="nav-item"><a class="" [routerLink]="['/friends-requests']" routerLinkActive="router-link-active" title="" data-ripple="">Friend Requests send</a></li>
+                         <li class="nav-item"><a class="" [routerLink]="['/friends-requests']" routerLinkActive="router-link-active" title="" data-ripple="">friend request sent</a></li>
                          <li class="nav-item"><a class="" [routerLink]="['/friends-received']" routerLinkActive="router-link-active" title="" data-ripple="">friend request received</a></li>
                       </ul>
 
+                      <!-- Tab panes -->
 
-                      <!-- danh sach loi moi ket ban -->
+                      <!-- danh sach ban be -->
                       <div class="tab-content">
                         <div class="tab-pane active fade show " id="frends" >
-
-                      <ul class="nearby-contct" *ngFor="let friend of listFriendRequestSend">
+                        <ul class="nearby-contct" *ngFor="let friend of listFriendRequestReceived">
                         <li>
                           <div class="nearly-pepls">
                             <figure>
-                              <a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title=""><img [src]="friend.usertwo.image" alt=""></a>
+                              <a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title=""><img [src]="friend.userone.image" alt=""></a>
                             </figure>
                             <div class="pepl-info">
-                              <h4><a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title="">{{friend.usertwo.username}}</a></h4> <br>
+                              <h4><a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title="">{{friend.userone.username}}</a></h4> <br>
 
-                              <button class="add-butn" (click)="cancel(friend.id)" data-ripple="">Cancel</button>
+                              <button class="add-butn more-action"  (click) = "Accept(friend.id)" >Accept</button> &nbsp;
+                              <button class="add-butn" (click)="Cancel(friend.id)" data-ripple="">Cancel</button>
                             </div>
                           </div>
                         </li>
@@ -570,111 +572,7 @@
                         </div>
                         <div class="tab-pane fade" id="frends-req" >
                         <ul class="nearby-contct">
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly5.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">Amy watson</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
 
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly1.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">sophia Gate</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly6.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">caty lasbo</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/friend-avatar9.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">jhon kates</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly2.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">sara grey</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly4.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">Sara grey</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/nearly3.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">Sexy cat</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- <li>
-                          <div class="nearly-pepls">
-                            <figure>
-                              <a href="time-line.html" title=""><img src="images/resources/friend-avatar9.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                              <h4><a href="time-line.html" title="">jhon kates</a></h4>
-                              <span>ftv model</span>
-                              <a href="#" title="" class="add-butn more-action" data-ripple="">delete Request</a>
-                              <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                            </div>
-                          </div>
-                        </li> -->
                       </ul>
                           <button class="btn-view btn-load-more"></button>
                         </div>
@@ -688,7 +586,7 @@
 
                 <div class="col-lg-3">
                   <aside class="sidebar static">
-                    <div class="widget">
+                    <!-- <div class="widget">
                       <h4 class="widget-title">Friend Suggestion</h4>
 
                       <ul class="followers" *ngFor="let fsg of listFriendSuggestion">
@@ -696,12 +594,12 @@
                           <figure><img [src]="fsg.image" alt=""></figure>
                           <div class="friend-meta">
                             <h3><a [routerLink]="['/profile/friend',fsg.id]" routerLinkActive="router-link-active" title="">{{fsg.username}}</a></h3>
-                            <button (click) = "addFriend(fsg.username)">Add Friend</button>
+                            <button  class="add-butn more-action" (click) = "addFriend(fsg.username)">Add Friend</button>
                           </div>
                         </li>
                       </ul>
 
-                    </div><!-- who's following -->
+                    </div>who's following -->
                   </aside>
                 </div>
               </div>
@@ -866,4 +764,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 
   </body>
+
 

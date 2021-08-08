@@ -34,6 +34,10 @@ cancelFriend(id: any): Observable<any>{
   return this.http.post(API_URL + '/api/friend/cancel/' + `${id}` , id)
 }
 
+cancelRequestSend(id: any): Observable<any>{
+  return this.http.post(API_URL + '/api/friend/cancelRequest/' + `${id}` , id)
+}
+
 // chan ket ban
 blockFriend(id: any): Observable<any>{
   return this.http.post(API_URL + '/api/friend/block/' + `${id}`, id)
@@ -43,9 +47,14 @@ unFriend(id: any): Observable<any>{
   return this.http.post(API_URL + '/api/friend/unfriend/' + `${id}`, id)
 }
 
-//list nguoi cho xac nhan ket ban
+//list loi moi ket ban da gui
 getFriendAccept(): Observable<any[]>{
-  return this.http.get<any[]>(API_URL + '/api/friend/listAccept')
+  return this.http.get<any[]>(API_URL + '/api/friend/friendrequestsent')
+}
+
+//list yeu cau cho xac nhan
+getFriendRequestReceived(): Observable<any[]>{
+  return this.http.get<any[]>(API_URL + '/api/friend/friendrequestreceived')
 }
 
 }

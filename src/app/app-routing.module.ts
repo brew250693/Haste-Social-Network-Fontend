@@ -9,6 +9,7 @@ import {FriendsComponent} from "./components/friends/friends.component";
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 import {DeletePostComponent} from './components/delete-post/delete-post.component'
 import { FriendsRequestsComponent } from './components/friends-requests/friends-requests.component';
+import { FriendReceivedComponent } from './components/friend-received/friend-received.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'edit-password', component: ChangepasswordComponent},
   { path: 'friends', component: FriendsComponent},
   { path: 'delete-post/:id' ,component: DeletePostComponent},
-  { path: 'friends-requests' , component:FriendsRequestsComponent}
+  { path: 'friends-requests' , component:FriendsRequestsComponent},
+  { path: 'friends-received', component: FriendReceivedComponent}
 
 
 ];

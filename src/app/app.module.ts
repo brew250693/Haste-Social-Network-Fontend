@@ -17,6 +17,7 @@ import {ChangepasswordComponent} from "./components/changepassword/changepasswor
 import { ProfileComponent } from './components/profile/profile.component';
 import { DeletePostComponent } from './components/delete-post/delete-post.component';
 import { FriendsRequestsComponent } from './components/friends-requests/friends-requests.component';
+import { FriendReceivedComponent } from './components/friend-received/friend-received.component';
 
 
 
@@ -32,6 +33,7 @@ import { FriendsRequestsComponent } from './components/friends-requests/friends-
     ProfileComponent,
     DeletePostComponent,
     FriendsRequestsComponent,
+    FriendReceivedComponent,
 
 
   ],

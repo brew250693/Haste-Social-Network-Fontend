@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class FriendsRequestsComponent implements OnInit {
 
   currentUser: any;
-  listFriendAccept: any[];
+  listFriendRequestSend: any[];
   listFriendSuggestion: any[];
   friendRequestForm: FriendRequest = {
     usernametwo:''
@@ -47,7 +47,7 @@ export class FriendsRequestsComponent implements OnInit {
     this.friendService.getFriendAccept()
       .subscribe(
         list => {
-          this.listFriendAccept = list;
+          this.listFriendRequestSend = list;
           console.log(list);
         },
         error => {
@@ -79,28 +79,15 @@ export class FriendsRequestsComponent implements OnInit {
 
   }
 
-  acceptFriend(id:any){
-    console.log(id)
-    this.friendService.acceptFriend(id)
-    .subscribe(
-      response => {
-        alert("xac nhan thanh cong")
-        // this.routers.navigate(['/friends'])
-        console.log(response);
-
-      },
-      error => {
-        console.log(error);
-      });
-  }
 
   cancel(id:any){
     console.log(id)
-    this.friendService.cancelFriend(id)
+    this.friendService.cancelRequestSend(id)
     .subscribe(
       response => {
-        alert("huy xac nhan thanh cong")
+        alert("huy yeu cau thanh cong")
         // this.routers.navigate(['/friends'])
+        location.reload();
         console.log(response);
 
       },

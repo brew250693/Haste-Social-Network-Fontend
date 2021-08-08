@@ -102,13 +102,18 @@ export class FriendsComponent implements OnInit {
         });
   }
 
+  // getListFriendRequestSend(){
+  //   this.friendService.
+  // }
+
   unFriend(id: any){
     console.log(id)
     this.friendService.unFriend(id)
     .subscribe(
       response => {
         alert("unfrien thanh cong")
-        this.routers.navigate(['/friends'])
+        location.reload()
+        // this.routers.navigate(['/friends'])
         console.log(response);
 
       },
@@ -123,7 +128,8 @@ export class FriendsComponent implements OnInit {
       .subscribe(
         response => {
           alert("chan thanh cong")
-          this.routers.navigate(['/friends'])
+          location.reload()
+          // this.routers.navigate(['/friends'])
           console.log(response);
 
         },
