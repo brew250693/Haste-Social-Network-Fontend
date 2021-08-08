@@ -64,7 +64,6 @@ export class FriendReceivedComponent implements OnInit {
     .subscribe(
       response => {
         alert("huy xac nhan thanh cong")
-        // this.routers.navigate(['/friends'])
         location.reload()
         console.log(response);
 
