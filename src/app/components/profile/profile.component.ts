@@ -97,7 +97,7 @@ formmp3: any = {};
 
   allPost(){
     this.postService.getPostByUser(this.name).subscribe(list =>{
-        this.postList = list;
+        this.postList = list.slice().reverse();
 
       }),
       error => {

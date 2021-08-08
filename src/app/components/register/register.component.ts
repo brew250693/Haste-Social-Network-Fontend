@@ -27,9 +27,11 @@ export class RegisterComponent implements OnInit {
   errorRegis: string;
   error1: string = "Tài khoản đã tồn tại!";
   error2: string = "Email đã được sử dụng!";
+  error3: string = "số điện thoại đã được sử dụng";
   check:boolean =false;
   check1:boolean = false;
   check2:boolean = false;
+  check3:boolean = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -41,7 +43,7 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.maxLength(11),Validators.minLength(10)]],
       birthday: ['', [Validators.required]],
       city: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -98,6 +100,7 @@ export class RegisterComponent implements OnInit {
           icon:"success",
           confirmButtonColor: "#3bc8e7",
         })
+        this.router.navigate(['/login'])
         if (res.message != null) {
         }
       },error => {
@@ -115,6 +118,9 @@ export class RegisterComponent implements OnInit {
         };
         if(this.errorRegis == this.error2){
           this.check2 = true;
+        }
+        if(this.errorRegis == this.error3){
+          this.check3 = true;
         }
       });
     }

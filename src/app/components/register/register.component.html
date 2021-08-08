@@ -19,10 +19,11 @@
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="login-reg-bg">
           <div class="log-reg-area sign">
-            <h2 class="log-title">Register</h2>
+<!--            <h2 class="log-title">Register</h2>-->
 
             <form [formGroup]="registerForm">
-              <table>
+
+              <table class="table-light">
                 <tr>
                   <th><label class="control-label">Username : </label><i class="mtrl-select"></i></th>
                   <td><input type="text" placeholder="Enter Your Username" formControlName="username" required></td>
@@ -55,26 +56,26 @@
                   <td><input type="text" placeholder="Enter Your Phone" formControlName="phone" required></td>
                 </tr>
 
-              <div>
+
               <div class="text-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-                Phone is required *
-              </div>
+<!--                Phone is required *-->
+
               <div *ngIf="phone.errors?.minlength">
                 Phone must be at least 10 characters *
               </div>
               <div *ngIf="phone.errors?.maxlength">
                 Phone must be no more than 11 characters *
               </div>
-
+          </div>
               <tr>
-                <th><label class="control-label">Birthday : </label><i class="mtrl-select"></i></th>
-                <td><input type="date" placeholder="Enter Your Birthday" formControlName="birthday" required></td>
+                <th><label class="control-label">Birthday:</label><i class="mtrl-select"></i></th>
+                <td><input type="date" placeholder="Enter Your Birthday" formControlName="birthday" required> </td>
               </tr>
 
               <div class="text-danger" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched) ">
                 Birthday is required *
               </div>
-          </div>
+
 
               <tr>
                 <th><label class="control-label">City : </label><i class="mtrl-select"></i></th>
@@ -140,11 +141,11 @@
                 </div>
               </div>
           </div>
+            </table>
               <div class="submit-btns">
-                <button type="submit" (click)="register()">Register</button><br>
+                <button type="submit" (click)="register()" class="btnSubmit">Register</button>
                 <p>Already Have An Account? <a routerLink="/login">Login here</a></p>
               </div>
-            </table>
             </form>
           </div>
         </div>

@@ -8,6 +8,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../../services/user/user.service";
 import {PostService} from "../../services/post/post.service";
 import Swal from "sweetalert2";
+import {ReversePipe} from "ngx-pipes";
 
 @Component({
   selector: 'app-home',
@@ -99,11 +100,13 @@ export class HomeComponent implements OnInit {
 
   allPost(){
     this.postService.getPostByUser(this.name).subscribe(list =>{
-      this.postList = list;
+      this.postList = list.slice().reverse();
 
     }),
       error => {
         console.log(error);
       }
   }
+
+
 }

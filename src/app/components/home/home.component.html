@@ -288,7 +288,7 @@
                     </figure>
                     <div class="friend-name">
                       <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
-                      <span>{{post.createDate}}</span>
+                      <span>{{post.createDate | date:'short'}} </span>
                     </div>
                     <div class="description">
                       <p>
@@ -304,13 +304,13 @@
                           <li>
 																<span class="comment" data-toggle="tooltip" title="Comments">
 																	<i class="fa fa-comments-o"></i>
-																	<ins>52</ins>
+																	<ins>{{post.comment_count}}</ins>
 																</span>
                           </li>
                           <li>
 																<span class="like" data-toggle="tooltip" title="like">
 																	<i class="ti-heart"></i>
-																	<ins>2.2k</ins>
+																	<ins>{{post.like_count}}</ins>
 																</span>
                           </li>
 

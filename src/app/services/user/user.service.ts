@@ -30,7 +30,7 @@ export class UserService {
   }
 
   getAllUser(): Observable<any[]>{
-    return this.httpClient.get<any[]>(API_URL + '/api/user/allUser');
+    return this.httpClient.get<any[]>(API_URL + '/api/user/allUserNoStatus');
   }
 
 }
