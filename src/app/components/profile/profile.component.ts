@@ -107,11 +107,12 @@ export class ProfileComponent implements OnInit {
   allPost() {
     this.postService.getPostByUser(this.name).subscribe(list => {
       this.postList = list.slice().reverse();
-
-    }),
+    } ,
       error => {
-        console.log(error);
-      }
+
+        this.postList = null;
+      })
+
   }
 
   updatePost(id: number) {
@@ -134,6 +135,35 @@ getListCommentPost(postId):void {
   this.allPost();
   console.log('post update', this.postIdUpdate);
 }
+
+  getListComment(num: any) {
+    this.allPost();
+  }
+
+  deletepost(id) {
+    this.postService.deletePost(id).subscribe(
+      res => {
+        this.allPost();
+        this.message = "delete post done";
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
+      },
+      error => {
+        this.message = "not permission";
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"error",
+          confirmButtonColor: "#3bc8e7",
+        })
+      }
+    )
+
+  }
 }
 
 

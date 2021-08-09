@@ -347,6 +347,9 @@
                   </div>
 
                   <!-- list post -->
+                  <div *ngIf="postList != null">
+
+
                   <div class="central-meta item" *ngFor="let post of postList">
                     <div class="user-post">
                       <div class="friend-info">
@@ -387,10 +390,10 @@
 
                               <li>
 																<span class="like" data-toggle="tooltip" title="delete">
-                                 <i class="ti-trash"></i>
+                                 <i class="ti-trash" (click)="deletepost(post.id)"></i>
 																</span>
                               </li>
-                              <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]=post.id></app-comment>
+                              <app-comment (numberChange)="getListComment($event)"  *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]=post.id></app-comment>
                             </ul>
 
 
@@ -410,6 +413,9 @@
                       </div>
                     </div>
                   </div>
+
+                  </div>
+
                 </div>
               </div>
             </div>

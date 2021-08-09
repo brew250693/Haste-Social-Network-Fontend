@@ -23,7 +23,7 @@ export class CommentService {
 
   //xoa comment
   deleteComment(id: any): Observable<any>{
-    return this.http.delete(API_URL + '/api/comment/' + `${id}`)
+    return this.http.delete(API_URL + '/api/comment/delete/' + `${id}`)
   }
 
   // lay list comment theo id bai post

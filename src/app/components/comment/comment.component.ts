@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { UploadService } from 'src/app/services/upload/upload.service';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-comment',
@@ -14,7 +15,10 @@ export class CommentComponent implements OnInit {
 
   @Input()
   id : any;
-
+  message:String;
+  @Output()
+  numberChange: EventEmitter<any> = new EventEmitter();
+  num = 0;
   number = 0;
 
   @Input()
@@ -46,13 +50,46 @@ export class CommentComponent implements OnInit {
         this.getListCommentByIdPost(this.id);
       }
     }
+
+
+
   }
 
   getListCommentByIdPost(id:any){
     this.commentService.getListComment(id).subscribe(list => {
       this.listCommentByIdPost = list;
       console.log(this.listCommentByIdPost);
+    }, error => {
+      this.listCommentByIdPost = null;
     })
+  }
+
+  deleteComment(idm:any):void{
+    console.log(idm+ "id comment");
+    this.commentService.deleteComment(idm).subscribe(
+      res => {
+        this.numberChange.emit(this.num++);
+        this.getListCommentByIdPost(this.id);
+        this.message = "delete done";
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
+        // location.reload();
+      },
+      error => {
+
+        this.message = "not permission";
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"error",
+          confirmButtonColor: "#3bc8e7",
+        })
+      }
+    )
   }
 
 }
