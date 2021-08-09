@@ -31,8 +31,8 @@ export class PostService {
   deletePost(id: any): Observable<any> {
     return this.httpClient.delete(API_URL + '/api/post/remove/' + `${id}`);
   }
-  // updatePost(post: IPost, id:any): Observable<IPost> {
-  //   return this.httpClient.put<IPost>(API_URL + '/api/post/update/'+ `${id}`, post);
-  // }
+  updatePost(post: IPost, id:any): Observable<IPost> {
+    return this.httpClient.put<IPost>(API_URL + '/api/post/update/'+ `${id}`, post);
+  }
 
 }

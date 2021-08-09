@@ -15,12 +15,12 @@ import {UploadService} from "../../services/upload/upload.service";
 })
 export class ProfileComponent implements OnInit {
 
-form : any = {};
-formavt: any = {};
-formmp3: any = {};
+  form: any = {};
+  formavt: any = {};
+  formmp3: any = {};
 
   // Upload
-  message:string;
+  message: string;
   selectedFile: File;
   ref: AngularFireStorageReference;
   downloadURL: string;
@@ -31,20 +31,20 @@ formmp3: any = {};
 
   // Post
   postList: any;
-  currentUser: any ;
-  name : String;
+  currentUser: any;
+  name: String;
   // image;
   // post: IPost;
   // id: number;
 
 
-  // id: any;
-  // status: number;
-  // image: String;
-  //
+  id: any;
+  status: number;
+  image: String;
+
   // post : Post = {id:"", description: "", image:""};
 
-  postForm: FormGroup= new FormGroup({
+  postForm: FormGroup = new FormGroup({
     description: new FormControl(),
     image: new FormControl(),
     mp3url: new FormControl(),
@@ -54,70 +54,64 @@ formmp3: any = {};
               private userService: UserService,
               private postService: PostService,
               private afStorage: AngularFireStorage,
-              private uploadService:UploadService,
-    )
-  {
+              private uploadService: UploadService,
+  ) {
     this.getUserPrincipal();
   }
 
   ngOnInit(): void {
   }
 
-  ngSubmit(){
-      this.postForm.value.image = this.formavt.image;
-      this.postForm.value.mp3url = this.formmp3.image
-      this.postService.createPost(this.postForm.value).subscribe(upPost =>{
-        this.message = "Post Success"
-        Swal.fire({
-          title:this.message,
-          text:"",
-          icon:"success",
-          confirmButtonColor: "#3bc8e7",
-        })
-        location.reload();
+  ngSubmit() {
+    this.postForm.value.image = this.formavt.image;
+    this.postForm.value.mp3url = this.formmp3.image
+    this.postService.createPost(this.postForm.value).subscribe(upPost => {
+      this.message = "Post Success"
+      Swal.fire({
+        title: this.message,
+        text: "",
+        icon: "success",
+        confirmButtonColor: "#3bc8e7",
       })
+      location.reload();
+    })
   };
 
 
-  getUserPrincipal(){
-    this.userService.getUserPrincipal().subscribe(user =>{
+  getUserPrincipal() {
+    this.userService.getUserPrincipal().subscribe(user => {
       this.currentUser = user;
       this.name = user.username;
       console.log(this.name);
-   this.allPost();
+      this.allPost();
     }),
       error => {
         console.log(error);
       }
   }
 
-  onchangeAvatar(event : any){
+  onchangeAvatar(event: any) {
     this.formavt.image = event;
   }
 
-  onFileChaged(event : any){
+  onFileChaged(event: any) {
     this.formmp3.mp3url = event;
   }
 
-  allPost(){
-    this.postService.getPostByUser(this.name).subscribe(list =>{
-        this.postList = list.slice().reverse();
+  allPost() {
+    this.postService.getPostByUser(this.name).subscribe(list => {
+      this.postList = list.slice().reverse();
 
-      }),
+    }),
       error => {
         console.log(error);
       }
   }
 
-  // updatePost() {
-  //   if (this.image!=null){
-  //     this.post.image = this.image;
-  //   }
-  //   this.postService.createPost(this.post).subscribe(() => {
-  //     this.router.navigateByUrl('/profile');
-  //
-  //   });
-  // }
+  updatePost(id: number) {
+    this.id = id
+  }
+}
 
   // deleteImage() {
   //   this.post.image = null;
@@ -164,6 +158,6 @@ formmp3: any = {};
   //     })
   // }
 
-}
+
 
 
