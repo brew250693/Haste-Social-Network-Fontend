@@ -38,8 +38,12 @@ export class HomeComponent implements OnInit {
   postList: any;
   currentUser: any ;
   name : String;
+  postIdUpdate: any;
 
-
+  isComment : boolean = false;
+  clickIsComment(){
+    this.isComment = !this.isComment;
+  }
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
@@ -102,6 +106,7 @@ export class HomeComponent implements OnInit {
   allPost(){
     this.postService.getAllPost().subscribe(list =>{
       this.postList = list.slice().reverse();
+      console.log(this.postList)
 
     }),
       error => {
@@ -115,6 +120,15 @@ export class HomeComponent implements OnInit {
       console.log(this.listCommentByIdPost);
     })
   }
+  submitComment(comment:any){
+      // this.commentService.createComment(comment).subscribe(Response =>{
 
+      // })
+  }
+  getListCommentPost(postId):void {
+    this.postIdUpdate = postId;
+    this.allPost();
+    console.log('post update', this.postIdUpdate);
+  }
 
 }

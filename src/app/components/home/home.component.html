@@ -167,7 +167,7 @@
           </ul>
         </li>
 
-        <img  [src]="currentUser.image" alt="" style="border-radius: 50%; width: 40px">
+        <img  [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px">
         <a href="/profile">{{currentUser.username}}</a>
 
       </ul>
@@ -303,8 +303,9 @@
                         <ul>
                           <li>
 																<span class="comment" data-toggle="tooltip" title="Comments">
-																	<i class="fa fa-comments-o"></i>
-																	<ins>{{post.comment_count}}</ins>
+                                   <i  (click)="clickIsComment()"  class="fa fa-comments-o" > {{post.comment_count}}
+                                   </i>
+<!--																	<button></button>-->
 																</span>
                           </li>
                           <li>
@@ -318,18 +319,30 @@
                           <li>
 																<span class="like" data-toggle="tooltip" title="delete">
 <button mat-raised-button ><a [routerLink]="['/update-post',post.id]" routerLinkActive="router-link-active">Update</a></button>																</span>
-                          </li>
-
-                          <li>
-																<span class="like" data-toggle="tooltip" title="delete">
-                                  <button mat-raised-button ><a [routerLink]="['/delete-post',post.id]" routerLinkActive="router-link-active">Delete</a></button>
+																<span class="like" data-toggle="tooltip" title="like">
+																	<i class="ti-heart">
+                                    {{post.like_count}}
+                                  </i>
+<!--																	<ins></ins>-->
 																</span>
                           </li>
-                        </ul><br> <br>
+                          <li>
+																<span class="like" data-toggle="tooltip" title="delete">
+                                  <button><i class="ti-trash" ></i></button>
+																</span>
+                          </li>
+                          <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]= post.id></app-comment>
+                        </ul>
+<!--                        <ng-temp0late #commentnow>-->
+
+<!--                        </ng-temp0late>-->
+
+                        <br> <br>
+
 
                          <!-- list comment  theo id post -->
 
-                        <ul *ngFor="let comment  of listCommentByIdPost">
+                        <!-- <ul *ngFor="let comment of listCommentByIdPost" >
 													<li>
 														<div class="comet-avatar">
 															<img [src]= "comment.user.image" alt="">
@@ -337,10 +350,10 @@
 														<div class="we-comment">
 															<div class="coment-head">
 																<h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
-																<span>{{comment.created_date}}</span>
-																<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-															</div>
-															<p> {{comment.text}}
+																<span>{{comment.createdDate | date: 'short'}}</span> -->
+																<!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
+															<!-- </div> -->
+															<!-- <p> {{comment.text}}
 																<i class="em em-smiley"></i>
 															</p>
 														</div>
@@ -352,6 +365,10 @@
                                      <i class="fa fa-comments-o"></i>
                                      <ins>{{post.comment_count}}</ins></span>
 <!--                                  </span>-->
+                                  <span class="comment" data-toggle="tooltip" title="Comments"> -->
+                                    <!-- <i class="fa fa-comments-o"></i> -->
+                                    <!-- <ins>{{post.comment_count}}</ins></span> -->
+                                  <!-- </span>
                             </li>
                             <li>
                               <app-like-post [id] = post.id ></app-like-post>
@@ -368,21 +385,28 @@
                             </li>
 
                           </ul> <br> <br>
-
-                          <!-- post comment -->
-                          <li class="post-comment">
+                        </ul> -->
+                        <ul>
+                           <!-- post comment -->
+                           <li class="post-comment">
                             <div class="comet-avatar">
-                              <img [src]="currentUser.image" alt="">
+                              <img [src]="currentUser?.image" alt="">
                             </div>
                             <div class="post-comt-box">
+                              <app-create-comment [id]= post.id (getListCommentPost)="getListCommentPost($event)"></app-create-comment>
 
-                              <form method="post">
-                                <textarea placeholder="Post your comment" ></textarea>
+                              <!-- <form method="post"> -->
+                                <!-- <textarea placeholder="Post your comment"  #inputElement (keyup.enter)="submitComment(inputElement.value)" ></textarea>
                                 <div class="add-smiles">
                                   <span class="em em-expressionless" title="add icon"></span>
-                                </div>
-                                <button type="submit"></button>
-                              </form>
+                                </div> -->
+                                <!-- <mat-form-field appearance="outline" fxFill> -->
+                                  <!-- <input matInput type="text" -->
+                                         <!-- placeholder="Viết bình luận..." #inputElement (keyup.enter)="submitComment(inputElement.value)"> -->
+                                <!-- </mat-form-field> -->
+                                <!-- <input placeholder="Post your comment"  #inputElement (keyup.enter)="submitComment( inputElement.value)" > -->
+                                <!-- <button type="submit"></button> -->
+                              <!-- </form> -->
                             </div>
                           </li>
                         </ul>

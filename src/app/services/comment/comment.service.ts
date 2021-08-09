@@ -13,7 +13,7 @@ export class CommentService {
 
   //viet comment moi
   createComment(id:any, commentPostCreate: any) : Observable<any>{
-    return this.http.post(API_URL + '/api/comment/create/' + `${id}`, id, commentPostCreate)
+    return this.http.post(API_URL + '/api/comment/create/' + id, commentPostCreate)
   }
 
   //sua comment
