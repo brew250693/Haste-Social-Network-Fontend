@@ -9,6 +9,7 @@ import {UserService} from "../../services/user/user.service";
 import {PostService} from "../../services/post/post.service";
 import Swal from "sweetalert2";
 import {ReversePipe} from "ngx-pipes";
+import { CommentService } from 'src/app/services/comment/comment.service';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   form : any = {};
   formavt: any = {};
   formmp3: any = {};
+  listCommentByIdPost:any[]
 
   // Upload
   message:string;
@@ -36,11 +38,6 @@ export class HomeComponent implements OnInit {
   name : String;
 
 
-  // id: any;
-  // status: number;
-  // image: String;
-  //
-  // post : Post = {id:"", description: "", image:""};
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
@@ -52,12 +49,14 @@ export class HomeComponent implements OnInit {
               private userService: UserService,
               private postService: PostService,
               private afStorage: AngularFireStorage,
-              private uploadService:UploadService)
+              private uploadService:UploadService,
+              private commentService: CommentService)
   {
     this.getUserPrincipal();
   }
 
   ngOnInit(): void {
+    
   }
 
   ngSubmit(){
@@ -99,13 +98,20 @@ export class HomeComponent implements OnInit {
   }
 
   allPost(){
-    this.postService.getPostByUser(this.name).subscribe(list =>{
+    this.postService.getAllPost().subscribe(list =>{
       this.postList = list.slice().reverse();
 
     }),
       error => {
         console.log(error);
       }
+  }
+
+  getListCommentByIdPost(id:any){
+    this.commentService.getListComment(id).subscribe(list => {
+      this.listCommentByIdPost = list;
+      console.log(this.listCommentByIdPost);
+    })
   }
 
 
