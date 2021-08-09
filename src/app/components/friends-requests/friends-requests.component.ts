@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FriendRequest } from 'src/app/model/FriendRequestForm';
 import { FriendService } from 'src/app/services/friend/friend.service';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-friends-requests',
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./friends-requests.component.scss']
 })
 export class FriendsRequestsComponent implements OnInit {
-
+message:String;
   currentUser: any;
   listFriendRequestSend: any[];
   listFriendSuggestion: any[];
@@ -32,10 +33,14 @@ export class FriendsRequestsComponent implements OnInit {
       console.log(this.friendRequestForm)
      this.friendService.addFriend(this.friendRequestForm).subscribe(
         response => {
-          alert("them thanh cong")
-          // this.routers.navigate(['/list'])
-          console.log(11);
-
+          this.message = "Add Friend Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
+location.reload();
         },
         error => {
           console.log(error);
@@ -85,8 +90,13 @@ export class FriendsRequestsComponent implements OnInit {
     this.friendService.cancelRequestSend(id)
     .subscribe(
       response => {
-        alert("huy yeu cau thanh cong")
-        // this.routers.navigate(['/friends'])
+        this.message = "Cancel Success"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
         location.reload();
         console.log(response);
 

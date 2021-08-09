@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FriendService } from 'src/app/services/friend/friend.service';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-friend-received',
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./friend-received.component.scss']
 })
 export class FriendReceivedComponent implements OnInit {
-
+  message:String;
   currentUser: any;
   listFriendRequestReceived: any;
   constructor(private friendService: FriendService,
@@ -48,7 +49,13 @@ export class FriendReceivedComponent implements OnInit {
     this.friendService.acceptFriend(id)
     .subscribe(
       response => {
-        alert("xac nhan thanh cong")
+        this.message = "Accept Friend Success"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
         location.reload()
         console.log(response);
 
@@ -63,7 +70,13 @@ export class FriendReceivedComponent implements OnInit {
     this.friendService.cancelFriend(id)
     .subscribe(
       response => {
-        alert("huy xac nhan thanh cong")
+        this.message = "Cancel Friend Success"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
         location.reload()
         console.log(response);
 

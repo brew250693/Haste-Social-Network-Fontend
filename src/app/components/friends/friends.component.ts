@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FriendRequest } from 'src/app/model/FriendRequestForm';
 import { FriendService } from 'src/app/services/friend/friend.service';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-friends',
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./friends.component.scss']
 })
 export class FriendsComponent implements OnInit {
-
+  message:string;
   currentUser: any;
   listFriend: any[];
 
@@ -78,10 +79,14 @@ export class FriendsComponent implements OnInit {
       console.log(this.friendRequestForm)
      this.friendService.addFriend(this.friendRequestForm).subscribe(
         response => {
-          alert("them thanh cong")
-          // this.routers.navigate(['/list'])
-          console.log(11);
-
+          this.message = "Add Friend Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
+          location.reload();
         },
         error => {
           console.log(error);
@@ -111,7 +116,13 @@ export class FriendsComponent implements OnInit {
     this.friendService.unFriend(id)
     .subscribe(
       response => {
-        alert("unfrien thanh cong")
+        this.message = "Unfriend Success"
+        Swal.fire({
+          title:this.message,
+          text:"",
+          icon:"success",
+          confirmButtonColor: "#3bc8e7",
+        })
         location.reload()
         // this.routers.navigate(['/friends'])
         console.log(response);
@@ -127,9 +138,14 @@ export class FriendsComponent implements OnInit {
       this.friendService.blockFriend(id)
       .subscribe(
         response => {
-          alert("chan thanh cong")
+          this.message = "Block Friend Success"
+          Swal.fire({
+            title:this.message,
+            text:"",
+            icon:"success",
+            confirmButtonColor: "#3bc8e7",
+          })
           location.reload()
-          // this.routers.navigate(['/friends'])
           console.log(response);
 
         },
