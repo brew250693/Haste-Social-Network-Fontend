@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <meta name="description" content=""/>
+  <meta name="keywords" content=""/>
   <title>Winku Social Network Toolkit</title>
   <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
 
@@ -21,7 +21,7 @@
 				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
 			</span>
       <span class="mh-text">
-				<a href="newsfeed.html" title=""><img src= "assets/images/logo2.png " alt=""></a>
+				<a href="newsfeed.html" title=""><img src="assets/images/logo2.png " alt=""></a>
 			</span>
       <span class="mh-btns-right">
 				<a class="fa fa-sliders" href="#shoppingbag"></a>
@@ -29,7 +29,7 @@
     </div>
     <div class="mh-head second">
       <form class="mh-form">
-        <input placeholder="search" />
+        <input placeholder="search"/>
         <a href="#/" class="fa fa-search"></a>
       </form>
     </div>
@@ -167,12 +167,14 @@
           </ul>
         </li>
 
-        <img  [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px">
+        <img [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px">
         <a href="/profile">{{currentUser.username}}</a>
 
       </ul>
       <div style="margin-top: 15px">
-      <div style="margin-right: auto"><app-log-out></app-log-out> </div>
+        <div style="margin-right: auto">
+          <app-log-out></app-log-out>
+        </div>
       </div>
     </div>
   </div><!-- topbar -->
@@ -242,174 +244,104 @@
                   <div class="central-meta item">
                     <div class="new-postbox">
                       <figure>
-                      <img [src]="currentUser.image" alt="">
-                    </figure>
-                    <div class="newpst-input">
-                      <form [formGroup]="postForm" (ngSubmit)="ngSubmit()" >
-                        <textarea formControlName= "description" rows="2" placeholder="write something"></textarea>
-                        <div class="attachments">
+                        <img [src]="currentUser.image" alt="">
+                      </figure>
+                      <div class="newpst-input">
+                        <form [formGroup]="postForm" (ngSubmit)="ngSubmit()">
+                          <textarea formControlName="description" rows="2" placeholder="write something"></textarea>
+                          <div class="attachments">
+                            <ul>
+                              <li>
+                                <i class="fa fa-image"></i>
+                                <label class="fileContainer">
+                                  <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)"></app-upload-image>
+                                  <!--                                  <input type="file" formControlName="image" (change)="onFileChaged($event)">-->
+                                  <!--                                  <button *ngIf="downloadURL?!selectedFile:selectedFile" color="accent" (click)="onUpLoad()">Upload Image</button>-->
+                                  <!--                                  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">-->
+                                  <!--                                    <img [src]="downloadURL" style="width: 300px; height: auto">-->
+                                  <!--                                  </div>-->
+                                </label>
+                              </li>
+
+                              <!--                              <li>-->
+                              <!--                                <i class="fa fa-music"></i>-->
+                              <!--                                <label class="fileContainer">-->
+                              <!--                                  <app-upload-file (giveURLtoCreate)="onFileChaged($event)" ></app-upload-file>-->
+                              <!--                                </label>-->
+                              <!--                              </li>-->
+
+                              <li>
+                                <button type="submit">Post</button>
+                              </li>
+                            </ul>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div><!-- add post new box -->
+                </div><!-- centerl meta -->
+
+                <!-- list post -->
+                <div class="central-meta item" *ngFor="let post of postList">
+                  <div class="user-post">
+                    <div class="friend-info">
+                      <figure>
+                        <img [src]="post.user.image" alt="">
+                      </figure>
+                      <div class="friend-name">
+                        <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
+                        <span>{{post.createDate | date:'short'}} </span>
+                      </div>
+                      <div class="description">
+                        <p>
+                          {{post.description}}
+                        </p>
+                      </div>
+                      <div class="post-meta">
+                        <div class="linked-image align-left">
+                          <a href="#" title=""><img src="{{post.image}}" alt=""></a>
+                        </div>
+                        <div class="we-video-info">
                           <ul>
-                            <li >
-                              <i class="fa fa-image"></i>
-                              <label class="fileContainer" >
-                                <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)" ></app-upload-image>
-                                <!--                                  <input type="file" formControlName="image" (change)="onFileChaged($event)">-->
-                                <!--                                  <button *ngIf="downloadURL?!selectedFile:selectedFile" color="accent" (click)="onUpLoad()">Upload Image</button>-->
-                                <!--                                  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">-->
-                                <!--                                    <img [src]="downloadURL" style="width: 300px; height: auto">-->
-                                <!--                                  </div>-->
-                              </label>
+                            <li>
+																<span class="comment" data-toggle="tooltip" title="Comments">
+                                   <i (click)="clickIsComment()" class="ti-comments-smiley"> {{post.comment_count}}
+                                   </i>
+																</span>
+                            </li>
+                            <li>
+                              <app-like-post [id]=post.id></app-like-post>
+
                             </li>
 
-                            <!--                              <li>-->
-                            <!--                                <i class="fa fa-music"></i>-->
-                            <!--                                <label class="fileContainer">-->
-                            <!--                                  <app-upload-file (giveURLtoCreate)="onFileChaged($event)" ></app-upload-file>-->
-                            <!--                                </label>-->
-                            <!--                              </li>-->
+                            <li>
+																<span class="like" data-toggle="tooltip" title="update">
+                                   <i class="ti-pencil-alt"></i>
+																</span>
+                            </li>
 
                             <li>
-                              <button type="submit">Post</button>
+																<span class="like" data-toggle="tooltip" title="delete">
+                                 <i class="ti-trash"></i>
+																</span>
+                            </li>
+                            <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]=post.id></app-comment>
+                          </ul>
+
+                          <ul>
+                            <!-- post comment -->
+                            <li class="post-comment">
+                              <div class="comet-avatar">
+                                <img [src]="currentUser?.image" alt="">
+                              </div>
+                              <div class="post-comt-box">
+                                <app-create-comment [id]=post.id
+                                                    (getListCommentPost)="getListCommentPost($event)"></app-create-comment>
+
+                              </div>
                             </li>
                           </ul>
                         </div>
-                      </form>
-                    </div>
-                  </div>
-                </div><!-- add post new box -->
-              </div><!-- centerl meta -->
-
-              <!-- list post -->
-              <div class="central-meta item" *ngFor="let post of postList">
-                <div class="user-post">
-                  <div class="friend-info">
-                    <figure>
-                      <img [src]="post.user.image" alt="">
-                    </figure>
-                    <div class="friend-name">
-                      <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
-                      <span>{{post.createDate | date:'short'}} </span>
-                    </div>
-                    <div class="description">
-                      <p>
-                        {{post.description}}
-                      </p>
-                    </div>
-                    <div class="post-meta">
-                      <div class="linked-image align-left">
-                        <a href="#" title=""><img src="{{post.image}}" alt=""></a>
-                      </div>
-                      <div class="we-video-info">
-                        <ul>
-                          <li>
-																<span class="comment" data-toggle="tooltip" title="Comments">
-                                   <i  (click)="clickIsComment()"  class="fa fa-comments-o" > {{post.comment_count}}
-                                   </i>
-<!--																	<button></button>-->
-																</span>
-                          </li>
-                          <li>
-                                                          <app-like-post [id] = post.id ></app-like-post>
-<!--																<span class="like" data-toggle="tooltip" title="like">-->
-<!--																	<i class="ti-heart"></i>-->
-<!--																	<ins>{{post.like_count}}</ins>-->
-<!--																</span>-->
-                          </li>
-
-                          <li>
-																<span class="like" data-toggle="tooltip" title="delete">
-<button mat-raised-button ><a [routerLink]="['/update-post',post.id]" routerLinkActive="router-link-active">Update</a></button>																</span>
-																<span class="like" data-toggle="tooltip" title="like">
-																	<i class="ti-heart">
-                                    {{post.like_count}}
-                                  </i>
-<!--																	<ins></ins>-->
-																</span>
-                          </li>
-                          <li>
-																<span class="like" data-toggle="tooltip" title="delete">
-                                  <button><i class="ti-trash" ></i></button>
-																</span>
-                          </li>
-                          <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]= post.id></app-comment>
-                        </ul>
-<!--                        <ng-temp0late #commentnow>-->
-
-<!--                        </ng-temp0late>-->
-
-                        <br> <br>
-
-
-                         <!-- list comment  theo id post -->
-
-                        <!-- <ul *ngFor="let comment of listCommentByIdPost" >
-													<li>
-														<div class="comet-avatar">
-															<img [src]= "comment.user.image" alt="">
-														</div>
-														<div class="we-comment">
-															<div class="coment-head">
-																<h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
-																<span>{{comment.createdDate | date: 'short'}}</span> -->
-																<!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
-															<!-- </div> -->
-															<!-- <p> {{comment.text}}
-																<i class="em em-smiley"></i>
-															</p>
-														</div>
-													</li>
-
-                          <ul>
-                            <li>
-                                  <span class="comment" data-toggle="tooltip" title="Comments">
-                                     <i class="fa fa-comments-o"></i>
-                                     <ins>{{post.comment_count}}</ins></span>
-                                  </span>
-                                  <span class="comment" data-toggle="tooltip" title="Comments"> -->
-                                    <!-- <i class="fa fa-comments-o"></i> -->
-                                    <!-- <ins>{{post.comment_count}}</ins></span> -->
-                                  <!-- </span>
-                            </li>
-                            <li>
-                              <app-like-post [id] = post.id ></app-like-post>
-                                  <span class="like" data-toggle="tooltip" title="like">
-                                    <i class="ti-heart"></i>
-                                    <ins>{{post.like_count}}</ins>
-                                  </span>
-                            </li>
-
-                            <li>
-                                  <span class="like" data-toggle="tooltip" title="delete">
-                                    <button><i class="ti-trash"  ></i></button>
-                                  </span>
-                            </li>
-
-                          </ul> <br> <br>
-                        </ul> -->
-                        <ul>
-                           <!-- post comment -->
-                           <li class="post-comment">
-                            <div class="comet-avatar">
-                              <img [src]="currentUser?.image" alt="">
-                            </div>
-                            <div class="post-comt-box">
-                              <app-create-comment [id]= post.id (getListCommentPost)="getListCommentPost($event)"></app-create-comment>
-
-                              <!-- <form method="post"> -->
-                                <!-- <textarea placeholder="Post your comment"  #inputElement (keyup.enter)="submitComment(inputElement.value)" ></textarea>
-                                <div class="add-smiles">
-                                  <span class="em em-expressionless" title="add icon"></span>
-                                </div> -->
-                                <!-- <mat-form-field appearance="outline" fxFill> -->
-                                  <!-- <input matInput type="text" -->
-                                         <!-- placeholder="Viết bình luận..." #inputElement (keyup.enter)="submitComment(inputElement.value)"> -->
-                                <!-- </mat-form-field> -->
-                                <!-- <input placeholder="Post your comment"  #inputElement (keyup.enter)="submitComment( inputElement.value)" > -->
-                                <!-- <button type="submit"></button> -->
-                              <!-- </form> -->
-                            </div>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -419,7 +351,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
 </div>

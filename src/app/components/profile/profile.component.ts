@@ -6,6 +6,7 @@ import {TokenService} from "../../services/token/token.service";
 import Swal from "sweetalert2";
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
 import {UploadService} from "../../services/upload/upload.service";
+import {CommentService} from "../../services/comment/comment.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
   form: any = {};
   formavt: any = {};
   formmp3: any = {};
+  listCommentByIdPost:any[];
 
   // Upload
   message: string;
@@ -33,9 +35,12 @@ export class ProfileComponent implements OnInit {
   postList: any;
   currentUser: any;
   name: String;
-  // image;
-  // post: IPost;
-  // id: number;
+  postIdUpdate: any;
+
+  isComment : boolean = false;
+  clickIsComment(){
+    this.isComment = !this.isComment;
+  }
 
 
   id: any;
@@ -55,6 +60,7 @@ export class ProfileComponent implements OnInit {
               private postService: PostService,
               private afStorage: AngularFireStorage,
               private uploadService: UploadService,
+              private commentService: CommentService
   ) {
     this.getUserPrincipal();
   }
@@ -111,53 +117,24 @@ export class ProfileComponent implements OnInit {
   updatePost(id: number) {
     this.id = id
   }
+
+getListCommentByIdPost(id:any){
+  this.commentService.getListComment(id).subscribe(list => {
+    this.listCommentByIdPost = list;
+    console.log(this.listCommentByIdPost);
+  })
 }
+submitComment(comment:any){
+  // this.commentService.createComment(comment).subscribe(Response =>{
 
-  // deleteImage() {
-  //   this.post.image = null;
-  //   this.img = null;
-  // }
-
-  // onFileChaged($event){
-  //   this.selectedFile = $event.target.files[0];
-  // }
-  //
-  //
-  // onUpLoad(){
-  //   this.checkUploadAvatar = true;
-  //   const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
-  //   this.ref = this.afStorage.ref(id);
-  //   this.ref.put(this.selectedFile)
-  //     .then(snapshot => {
-  //       return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
-  //     })
-  //     .then(downloadURL => { //Chuyen Value tu component cha sang con
-  //       this.downloadURL = downloadURL;
-  //       this.giveURLtoCreate.emit(this.downloadURL);
-  //       this.checkUploadAvatar = false;
-  //       let image:Image= new Image(downloadURL);
-  //       this.uploadService.createImg(image).subscribe((succes)=>{
-  //         this.message = "Upload Success"
-  //         Swal.fire({
-  //           title:this.message,
-  //           text:"",
-  //           icon:"success",
-  //           confirmButtonColor: "#3bc8e7",
-  //         })
-  //       })
-  //       return downloadURL;
-  //     })
-  //     .catch(error=>{
-  //       this.message = "Upload Fail"
-  //       Swal.fire({
-  //         title:this.message,
-  //         text:"",
-  //         icon:"error",
-  //         confirmButtonColor: "#3bc8e7",
-  //       })
-  //     })
-  // }
-
+  // })
+}
+getListCommentPost(postId):void {
+  this.postIdUpdate = postId;
+  this.allPost();
+  console.log('post update', this.postIdUpdate);
+}
+}
 
 
 

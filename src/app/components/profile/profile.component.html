@@ -370,46 +370,38 @@
                             <ul>
                               <li>
 																<span class="comment" data-toggle="tooltip" title="Comments">
-																	<i class="fa fa-comments-o"></i>
-																	<ins>{{post.comment_count}}</ins>
+                                   <i (click)="clickIsComment()" class="ti-comments-smiley"> {{post.comment_count}}
+                                   </i>
 																</span>
                               </li>
                               <li>
-                                <app-like-post [id] = post.id ></app-like-post>
-<!--																<span class="like" data-toggle="tooltip" title="like">-->
-<!--																	<i class="ti-heart"></i>-->
-<!--																	<ins>{{post.like_count}}</ins>-->
-<!--																</span>-->
+                                <app-like-post [id]=post.id></app-like-post>
+
                               </li>
 
                               <li>
 																<span class="like" data-toggle="tooltip" title="update">
-                                   <button mat-raised-button ><a [routerLink]="['/update-post',post.id]" routerLinkActive="router-link-active">Update</a></button>
+                                   <i class="ti-pencil-alt"></i>
 																</span>
                               </li>
 
                               <li>
 																<span class="like" data-toggle="tooltip" title="delete">
-                                  <button mat-raised-button ><a [routerLink]="['/delete-post',post.id]" routerLinkActive="router-link-active">Delete</a></button>
+                                 <i class="ti-trash"></i>
 																</span>
                               </li>
-
+                              <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]=post.id></app-comment>
                             </ul>
+
+
                             <ul>
                               <li class="post-comment">
                                 <div class="comet-avatar">
-                                  <img src="assets/images/resources/comet-1.jpg" alt="">
+                                  <img [src]="currentUser?.image" alt="">
                                 </div>
                                 <div class="post-comt-box">
-
-                                  <form method="post">
-                                    <textarea placeholder="Post your comment"></textarea>
-                                    <div class="add-smiles">
-                                      <span class="em em-expressionless" title="add icon"></span>
-                                    </div>
-                                    <button type="submit"></button>
-                                  </form>
-
+                                  <app-create-comment [id]=post.id
+                                                      (getListCommentPost)="getListCommentPost($event)"></app-create-comment>
                                 </div>
                               </li>
                             </ul>
