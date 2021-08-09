@@ -37,6 +37,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
 import {NgPipesModule} from "ngx-pipes";
 import { CommentComponent } from './components/comment/comment.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { CommentComponent } from './components/comment/comment.component';
     FriendsRequestsComponent,
     FriendReceivedComponent,
     CommentComponent,
+    CreateCommentComponent,
 
 
   ],

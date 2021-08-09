@@ -53,11 +53,21 @@ export class HomeComponent implements OnInit {
               private commentService: CommentService)
   {
     this.getUserPrincipal();
+
   }
 
   ngOnInit(): void {
-    
-  }
+    // for(let i =0; i< this.postList.length; i++){
+
+      // this.getListCommentByIdPost(18)
+      // this.postList[i].id =
+
+    // console.log(this.postList)
+    // console.log(this.listCommentByIdPost, 1111)
+
+  // }
+}
+
 
   ngSubmit(){
     // this.post.description = this.form.description;
@@ -112,6 +122,11 @@ export class HomeComponent implements OnInit {
       this.listCommentByIdPost = list;
       console.log(this.listCommentByIdPost);
     })
+  }
+  submitComment(comment:any){
+      // this.commentService.createComment(comment).subscribe(Response =>{
+
+      // })
   }
 
 

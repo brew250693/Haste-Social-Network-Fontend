@@ -1,0 +1,46 @@
+<a (click)="getListCommentByIdPost(id)" >
+    <span class="comment" data-toggle="tooltip" title="Comments">
+      <i class="fa fa-comments-o"></i>
+        <ul *ngFor="let comment of listCommentByIdPost" >
+          <li>
+            <div class="comet-avatar">
+              <img [src]= "comment.user.image" alt="">
+            </div>
+            <div class="we-comment">
+              <div class="coment-head">
+                <h5><a href="/profile" title="">{{comment.user.username}}</a></h5>
+                <span>{{comment.createdDate | date: 'short'}}</span>
+              </div>
+              <p> {{comment.text}}
+                <i class="em em-smiley"></i>
+              </p>
+            </div>
+          </li>
+
+          <ul>
+            <li>
+                  <span class="comment" data-toggle="tooltip" title="Comments">
+                    <!-- <i class="fa fa-comments-o"></i> -->
+                    <!-- <ins>{{post.comment_count}}</ins></span> -->
+                  </span>
+            </li>
+            <li>
+                  <span class="like" data-toggle="tooltip" title="like">
+                    <i class="ti-heart"></i>
+                    <!-- <ins>{{post.like_count}}</ins> -->
+                  </span>
+            </li>
+
+            <li>
+                  <span class="like" data-toggle="tooltip" title="delete">
+                    <button><i class="ti-trash"  ></i></button>
+                  </span>
+            </li>
+
+          </ul> <br> <br>
+        </ul>
+
+    </span>
+
+
+  </a>
