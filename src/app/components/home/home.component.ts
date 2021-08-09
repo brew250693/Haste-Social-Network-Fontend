@@ -10,6 +10,8 @@ import {PostService} from "../../services/post/post.service";
 import Swal from "sweetalert2";
 import {ReversePipe} from "ngx-pipes";
 import { CommentService } from 'src/app/services/comment/comment.service';
+import {LikepostService} from "../../services/post/likepost.service";
+import {LikePostComponent} from "../like-post/like-post.component";
 
 @Component({
   selector: 'app-home',
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngSubmit(){
