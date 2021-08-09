@@ -38,6 +38,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {NgPipesModule} from "ngx-pipes";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import {NgPipesModule} from "ngx-pipes";
     DeletePostComponent,
     FriendsRequestsComponent,
     FriendReceivedComponent,
+
 
 
   ],

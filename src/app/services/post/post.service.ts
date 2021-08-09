@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
+import {IPost} from "../../model/IPost";
 
 const API_URL= 'http://localhost:8080'
 
@@ -30,5 +31,8 @@ export class PostService {
   deletePost(id: any): Observable<any> {
     return this.httpClient.delete(API_URL + '/api/post/remove/' + `${id}`);
   }
+  // updatePost(post: IPost, id:any): Observable<IPost> {
+  //   return this.httpClient.put<IPost>(API_URL + '/api/post/update/'+ `${id}`, post);
+  // }
 
 }

@@ -33,6 +33,9 @@ formmp3: any = {};
   postList: any;
   currentUser: any ;
   name : String;
+  // image;
+  // post: IPost;
+  // id: number;
 
 
   // id: any;
@@ -51,7 +54,8 @@ formmp3: any = {};
               private userService: UserService,
               private postService: PostService,
               private afStorage: AngularFireStorage,
-              private uploadService:UploadService)
+              private uploadService:UploadService,
+    )
   {
     this.getUserPrincipal();
   }
@@ -104,6 +108,21 @@ formmp3: any = {};
         console.log(error);
       }
   }
+
+  // updatePost() {
+  //   if (this.image!=null){
+  //     this.post.image = this.image;
+  //   }
+  //   this.postService.createPost(this.post).subscribe(() => {
+  //     this.router.navigateByUrl('/profile');
+  //
+  //   });
+  // }
+
+  // deleteImage() {
+  //   this.post.image = null;
+  //   this.img = null;
+  // }
 
   // onFileChaged($event){
   //   this.selectedFile = $event.target.files[0];
