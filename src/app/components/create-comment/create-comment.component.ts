@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { IComment } from 'src/app/model/Comment';
 import { CommentService } from 'src/app/services/comment/comment.service';
 
@@ -9,11 +9,15 @@ import { CommentService } from 'src/app/services/comment/comment.service';
 })
 export class CreateCommentComponent implements OnInit {
 
+listComment:any;
+
   @Input()
   id : any;
+  number = 0;
+  @Output() getListCommentPost: EventEmitter<any> = new EventEmitter();
 
   commentForm: IComment= {
-    content:''
+    text:''
   }
 
   constructor(private commentService: CommentService) { }
@@ -22,12 +26,15 @@ export class CreateCommentComponent implements OnInit {
   }
 
   submitComment(id:any, content:any){
-    this.commentForm.content = content;
+    this.commentForm.text = content;
     console.log(content)
     console.log(this.commentForm)
     this.commentService.createComment(this.id,this.commentForm).subscribe(Response =>{
-      console.log('create success')
+      console.log('create comment success');
+      this.number++;
+      this.getListCommentPost.emit( this.id + '_' + this.number);
     })
+
 
   }
 }

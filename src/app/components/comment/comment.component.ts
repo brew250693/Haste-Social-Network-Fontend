@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { TokenService } from 'src/app/services/token/token.service';
@@ -15,6 +15,10 @@ export class CommentComponent implements OnInit {
   @Input()
   id : any;
 
+  number = 0;
+
+  @Input()
+  postIdUpdate : any;
   listCommentByIdPost:any;
 
   constructor(
@@ -28,6 +32,20 @@ export class CommentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getListCommentByIdPost(this.id);
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    console.log(change);
+    console.log('postID uodate in comment', this.postIdUpdate);
+    console.log('curentId post', this.id);
+    if (change.postIdUpdate.currentValue) {
+      this.postIdUpdate = this.postIdUpdate.split('_')[0];
+      console.log('postID uodate in comment', this.postIdUpdate);
+      if (this.postIdUpdate == this.id) {
+        this.getListCommentByIdPost(this.id);
+      }
+    }
   }
 
   getListCommentByIdPost(id:any){

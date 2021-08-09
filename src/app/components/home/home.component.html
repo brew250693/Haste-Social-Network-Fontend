@@ -167,7 +167,7 @@
           </ul>
         </li>
 
-        <img  [src]="currentUser.image" alt="" style="border-radius: 50%; width: 40px">
+        <img  [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px">
         <a href="/profile">{{currentUser.username}}</a>
 
       </ul>
@@ -303,14 +303,17 @@
                         <ul>
                           <li>
 																<span class="comment" data-toggle="tooltip" title="Comments">
-                                  <app-comment [id]= post.id></app-comment>
-																	<ins>{{post.comment_count}}</ins>
+                                   <i  (click)="clickIsComment()"  class="fa fa-comments-o" > {{post.comment_count}}
+                                   </i>
+<!--																	<button></button>-->
 																</span>
                           </li>
                           <li>
 																<span class="like" data-toggle="tooltip" title="like">
-																	<i class="ti-heart"></i>
-																	<ins>{{post.like_count}}</ins>
+																	<i class="ti-heart">
+                                    {{post.like_count}}
+                                  </i>
+<!--																	<ins></ins>-->
 																</span>
                           </li>
                           <li>
@@ -318,7 +321,13 @@
                                   <button><i class="ti-trash" ></i></button>
 																</span>
                           </li>
-                        </ul><br> <br>
+                          <app-comment *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]= post.id></app-comment>
+                        </ul>
+<!--                        <ng-temp0late #commentnow>-->
+
+<!--                        </ng-temp0late>-->
+
+                        <br> <br>
 
 
                          <!-- list comment  theo id post -->
@@ -366,10 +375,10 @@
                            <!-- post comment -->
                            <li class="post-comment">
                             <div class="comet-avatar">
-                              <img [src]="currentUser.image" alt="">
+                              <img [src]="currentUser?.image" alt="">
                             </div>
                             <div class="post-comt-box">
-                              <app-create-comment [id]= post.id></app-create-comment>
+                              <app-create-comment [id]= post.id (getListCommentPost)="getListCommentPost($event)"></app-create-comment>
 
                               <!-- <form method="post"> -->
                                 <!-- <textarea placeholder="Post your comment"  #inputElement (keyup.enter)="submitComment(inputElement.value)" ></textarea>

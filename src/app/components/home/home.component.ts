@@ -36,8 +36,12 @@ export class HomeComponent implements OnInit {
   postList: any;
   currentUser: any ;
   name : String;
+  postIdUpdate: any;
 
-
+  isComment : boolean = false;
+  clickIsComment(){
+    this.isComment = !this.isComment;
+  }
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
@@ -57,6 +61,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
     // for(let i =0; i< this.postList.length; i++){
 
       // this.getListCommentByIdPost(18)
@@ -101,6 +107,7 @@ export class HomeComponent implements OnInit {
 
   onchangeAvatar(event : any){
     this.formavt.image = event;
+
   }
 
   onFileChaged(event : any){
@@ -110,6 +117,7 @@ export class HomeComponent implements OnInit {
   allPost(){
     this.postService.getAllPost().subscribe(list =>{
       this.postList = list.slice().reverse();
+      console.log(this.postList)
 
     }),
       error => {
@@ -128,6 +136,10 @@ export class HomeComponent implements OnInit {
 
       // })
   }
-
+  getListCommentPost(postId):void {
+    this.postIdUpdate = postId;
+    this.allPost();
+    console.log('post update', this.postIdUpdate);
+  }
 
 }
