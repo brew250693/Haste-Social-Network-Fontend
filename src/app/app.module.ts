@@ -38,7 +38,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {NgPipesModule} from "ngx-pipes";
 import { CommentComponent } from './components/comment/comment.component';
 import { LikePostComponent } from './components/like-post/like-post.component';
-import { UpdatePostComponent } from './components/update-post/update-post.component';
 
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 
@@ -63,7 +62,6 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
     FriendReceivedComponent,
     CommentComponent,
     LikePostComponent,
-    UpdatePostComponent,
 
     CreateCommentComponent,
 
