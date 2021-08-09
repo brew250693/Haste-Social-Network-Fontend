@@ -121,12 +121,7 @@
             <li><a href="insights.html" title="">insights</a></li>
             <li><a href="knowledge-base.html" title="">knowledge base</a></li>
           </ul>
-        </li>
-        <li><a href="about.html" title="">about</a></li>
-        <li><a href="about-company.html" title="">About Us2</a></li>
-        <li><a href="contact.html" title="">contact</a></li>
-        <li><a href="contact-branches.html" title="">Contact Us2</a></li>
-        <li><a href="widgets.html" title="">Widgts</a></li>
+
       </ul>
     </nav>
 
@@ -170,6 +165,8 @@
             <li><a href="/about" title="">about</a></li>
           </ul>
         </li>
+        <img  [src]="currentUser.image" alt="" style="border-radius: 50%; width: 40px">
+        <a href="/profile">{{currentUser.username}}</a>
       </ul>
       <div style="margin-top: 15px">
         <div style="margin-right: auto"><app-log-out></app-log-out> </div>
