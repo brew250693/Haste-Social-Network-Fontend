@@ -40,6 +40,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { LikePostComponent } from './components/like-post/like-post.component';
 
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { LikecommentsComponent } from './components/likecomments/likecomments.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
     LikePostComponent,
 
     CreateCommentComponent,
+      LikecommentsComponent,
 
 
   ],
