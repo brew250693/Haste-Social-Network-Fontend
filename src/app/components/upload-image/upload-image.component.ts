@@ -19,6 +19,7 @@ export class UploadImageComponent implements OnInit {
   giveURLtoCreate = new EventEmitter<string>();
   constructor(private afStorage: AngularFireStorage, private uploadService:UploadService) { }
 
+
   ngOnInit(): void {
   }
   //Khi upload file qua the input dưới dạng 1 hoặc nhiều file thì tệp đó thông qua sự kiện (change)$event được kích hoạt. Và tất cả file upload sẽ lưu trữ

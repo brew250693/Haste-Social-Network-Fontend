@@ -1,11 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs';
+import { Observer } from 'rxjs';
 
-
-
-const API_URL = `${environment.API_URL}`;
+const API_URL= 'http://localhost:8080'
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +11,23 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-  submitComment(comment: Comment, postId: number): Observable<Comment> {
-    return this.http.post<Comment>(API_URL + '/api/comment/create/{id}', comment);
+  //viet comment moi
+  createComment(id:any, commentPostCreate: any) : Observable<any>{
+    return this.http.post(API_URL + '/api/comment/create/' + `${id}`, id, commentPostCreate)
   }
 
+  //sua comment
+  updateComment(id:any, commentPostCreate: any): Observable<any> {
+    return this.http.put(API_URL + '/api/comment/update/' + `${id}`, id, commentPostCreate)
+  }
+
+  //xoa comment
+  deleteComment(id: any): Observable<any>{
+    return this.http.delete(API_URL + '/api/comment/' + `${id}`)
+  }
+
+  // lay list comment theo id bai post
+  getListComment(id: any): Observable<any>{
+    return this.http.get<any[]>(API_URL + '/api/comment/' +`${id}`)
+  }
 }

@@ -36,6 +36,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
 import {NgPipesModule} from "ngx-pipes";
+import { CommentComponent } from './components/comment/comment.component';
+import { LikePostComponent } from './components/like-post/like-post.component';
 
 
 
@@ -57,6 +59,8 @@ import {NgPipesModule} from "ngx-pipes";
     DeletePostComponent,
     FriendsRequestsComponent,
     FriendReceivedComponent,
+    CommentComponent,
+    LikePostComponent,
 
 
 
