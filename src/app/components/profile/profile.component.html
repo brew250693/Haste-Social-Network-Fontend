@@ -4,10 +4,10 @@
   <div class="responsive-header">
     <div class="mh-head first Sticky">
 			<span class="mh-btns-left">
-				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+				<a class="" ><i class="fa fa-align-justify"></i></a>
 			</span>
       <span class="mh-text">
-				<a href="newsfeed.html" title=""><img src="assets/images/logo2.png" alt=""></a>
+				<a  title=""><img src="assets/images/logo2.png" alt=""></a>
 			</span>
       <span class="mh-btns-right">
 				<a class="fa fa-sliders" href="#shoppingbag"></a>
@@ -20,125 +20,32 @@
       </form>
     </div>
     <nav id="menu" class="res-menu">
-      <ul>
-        <li><span>Home</span>
-          <ul>
-            <li><a href="index-2.html" title="">Home Social</a></li>
-            <li><a href="index2.html" title="">Home Social 2</a></li>
 
-            <li><a href="landing.html" title="">Login page</a></li>
-            <li><a href="logout.html" title="">Logout Page</a></li>
-
-          </ul>
-        </li>
-        <li><span>Profile</span>
-          <ul>
-            <li><a routerLink="/profile" title="">timeline</a></li>
-            <li><a routerLink="/friends" title="">timeline friends</a></li>
-            <li><a href="timeline-photos.html" title="">timeline photos</a></li>
-            <li><a href="timeline-videos.html" title="">timeline videos</a></li>
-          </ul>
-        </li>
-        <li><span>Account Setting</span>
-          <ul>
-
-            <li><a href="edit-password.html" title="">edit-password</a></li>
-            <li><a href="edit-profile-basic.html" title="">edit profile basics</a></li>
-            <li><a href="messages.html" title="">message box</a></li>
-            <li><a href="inbox.html" title="">Inbox</a></li>
-            <li><a href="notifications.html" title="">notifications page</a></li>
-          </ul>
-        </li>
-        <li><span>forum</span>
-          <ul>
-            <li><a href="forum.html" title="">Forum Page</a></li>
-            <li><a href="forums-category.html" title="">Fourm Category</a></li>
-            <li><a href="forum-open-topic.html" title="">Forum Open Topic</a></li>
-            <li><a href="forum-create-topic.html" title="">Forum Create Topic</a></li>
-          </ul>
-        </li>
-        <li><span>Our Shop</span>
-          <ul>
-            <li><a href="shop.html" title="">Shop Products</a></li>
-            <li><a href="shop-masonry.html" title="">Shop Masonry Products</a></li>
-            <li><a href="shop-single.html" title="">Shop Detail Page</a></li>
-            <li><a href="shop-cart.html" title="">Shop Product Cart</a></li>
-            <li><a href="shop-checkout.html" title="">Product Checkout</a></li>
-          </ul>
-        </li>
-        <li><span>Our Blog</span>
-          <ul>
-            <li><a href="blog-grid-wo-sidebar.html" title="">Our Blog</a></li>
-            <li><a href="blog-grid-right-sidebar.html" title="">Blog with R-Sidebar</a></li>
-            <li><a href="blog-grid-left-sidebar.html" title="">Blog with L-Sidebar</a></li>
-            <li><a href="blog-masonry.html" title="">Blog Masonry Style</a></li>
-            <li><a href="blog-list-wo-sidebar.html" title="">Blog List Style</a></li>
-            <li><a href="blog-list-right-sidebar.html" title="">Blog List with R-Sidebar</a></li>
-            <li><a href="blog-list-left-sidebar.html" title="">Blog List with L-Sidebar</a></li>
-            <li><a href="blog-detail.html" title="">Blog Post Detail</a></li>
-          </ul>
-        </li>
-        <li><span>Portfolio</span>
-          <ul>
-            <li><a href="portfolio-2colm.html" title="">Portfolio 2col</a></li>
-            <li><a href="portfolio-3colm.html" title="">Portfolio 3col</a></li>
-            <li><a href="portfolio-4colm.html" title="">Portfolio 4col</a></li>
-          </ul>
-        </li>
-        <li><span>Support & Help</span>
-          <ul>
-            <li><a href="support-and-help.html" title="">Support & Help</a></li>
-            <li><a href="support-and-help-detail.html" title="">Support & Help Detail</a></li>
-            <li><a href="support-and-help-search-result.html" title="">Support & Help Search Result</a></li>
-          </ul>
-        </li>
-        <li><span>More pages</span>
-          <ul>
-            <li><a href="careers.html" title="">Careers</a></li>
-            <li><a href="career-detail.html" title="">Career Detail</a></li>
-            <li><a href="404.html" title="">404 error page</a></li>
-            <li><a href="404-2.html" title="">404 Style2</a></li>
-            <li><a href="faq.html" title="">faq's page</a></li>
-            <li><a href="insights.html" title="">insights</a></li>
-            <li><a href="knowledge-base.html" title="">knowledge base</a></li>
-          </ul>
-
-      </ul>
     </nav>
 
   </div><!-- responsive header -->
 
   <div class="topbar stick">
     <div class="logo">
-      <a title="" href="/home"><img src="/assets/images/logo.png" alt=""></a>
+      <a title="" [routerLink]="['/home']" routerLinkActive="router-link-active"><img src="/assets/images/logo.png" alt=""></a>
     </div>
     <div class="top-area">
       <div class="top-search">
         <form method="post" class="">
-          <input type="text" placeholder="Search Friend">
+          <input type="text" placeholder="Search Friend" style="width: 250px; height: 40px">
           <button data-ripple><i class="ti-search"></i></button>
         </form>
       </div>
       <ul class="main-menu">
+
         <li>
-          <a href="/profile" title="">timeline</a>
+          <a >account settings</a>
           <ul>
-            <li><a href="/profile" title="">timeline</a></li>
-            <li><a href="/friends" title="">Friends</a></li>
-            <li><a href="/photos" title="">Photos</a></li>
-            <li><a href="/videos" title=""> Videos</a></li>
+            <li><a [routerLink]="['/edit-password']" routerLinkActive="router-link-active" title="">edit-password</a></li>
+            <li><a [routerLink]="['/edit-profile']" routerLinkActive="router-link-active" title="">edit profile</a></li>
           </ul>
         </li>
-        <li>
-          <a href="#" title="">account settings</a>
-          <ul>
-            <li><a href="/edit-password" title="">edit-password</a></li>
-            <li><a href="/edit-profile" title="">edit profile</a></li>
-            <li><a href="/message" title="">message box</a></li>
-            <li><a href="/inbox" title="">Inbox</a></li>
-            <li><a href="/notifications" title="">notifications page</a></li>
-          </ul>
-        </li>
+
         <li>
           <a href="#" title="">more pages</a>
           <ul>
@@ -146,7 +53,7 @@
             <li><a href="/about" title="">about</a></li>
           </ul>
         </li>
-        <img  [src]="currentUser.image" alt="" style="border-radius: 50%; width: 40px">
+        <img  [src]="currentUser.image" alt="" style="border-radius: 50%; width: 40px"> &nbsp;
         <a href="/profile">{{currentUser.username}}</a>
       </ul>
       <div style="margin-top: 15px">
@@ -185,7 +92,7 @@
                   <h5>{{currentUser.name}}</h5>
                 </li>
                 <li>
-                  <a class="active" [routerLink]="['/profile']" routerLinkActive="router-link-active" data-ripple="">time line</a>
+                  <a class="active" [routerLink]="['/profile']" routerLinkActive="router-link-active" data-ripple="">Time line</a>
                   <a  class=""[routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">Friends</a>
                   <a class="" [routerLink]="['/photos']" routerLinkActive="router-link-active" title="" data-ripple="">Photos</a>
                   <a class="" [routerLink]="['/videos']" routerLinkActive="router-link-active" title="" data-ripple="">Videos</a>
@@ -247,36 +154,36 @@
                     <ul class="naves">
                       <li>
                         <i class="ti-clipboard"></i>
-                        <a href="/home" title="">Home</a>
+                        <a [routerLink]="['/home']" routerLinkActive="router-link-active" title="">Home</a>
                       </li>
                       <li>
                         <i class="ti-mouse-alt"></i>
-                        <a href="/inbox" title="">Inbox</a>
+                        <a [routerLink]="['/inbox']" routerLinkActive="router-link-active" title="">Inbox</a>
                       </li>
 
                       <li>
                         <i class="ti-user"></i>
-                        <a href="/friends" title="">friends</a>
+                        <a [routerLink]="['/friends']" routerLinkActive="router-link-active" title="">friends</a>
                       </li>
                       <li>
                         <i class="ti-image"></i>
-                        <a href="/photos" title="">images</a>
+                        <a [routerLink]="['/images']" routerLinkActive="router-link-active" title="">images</a>
                       </li>
                       <li>
                         <i class="ti-video-camera"></i>
-                        <a href="/videos" title="">videos</a>
+                        <a [routerLink]="['/videos']" routerLinkActive="router-link-active" title="">videos</a>
                       </li>
                       <li>
                         <i class="ti-comments-smiley"></i>
-                        <a href="/messages" title="">Messages</a>
+                        <a [routerLink]="['/message']" routerLinkActive="router-link-active" title="">Messages</a>
                       </li>
                       <li>
                         <i class="ti-bell"></i>
-                        <a href="/notification" title="">Notifications</a>
+                        <a [routerLink]="['/notification']" routerLinkActive="router-link-active" title="">Notifications</a>
                       </li>
                       <li>
                         <i class="ti-power-off"></i>
-                        <a href="/logout" title="">Logout</a>
+                        <a [routerLink]="['/logout']" routerLinkActive="router-link-active" title="">Logout</a>
                       </li>
                     </ul>
                   </div>
