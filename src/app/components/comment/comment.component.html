@@ -3,7 +3,7 @@
 <!--      <i class="fa fa-comments-o"></i>-->
 <div *ngIf="listCommentByIdPost != null">
 
-
+  &nbsp;
 <ul *ngFor="let comment of listCommentByIdPost">
   <li>
     <div class="comet-avatar">
@@ -14,8 +14,14 @@
         <h5><a href="/profile" title="">{{comment.user.username}}</a></h5>
         <span>{{comment.createdDate | date: 'short'}}</span>
       </div>
-      <p> {{comment.text}}
-      </p>
+
+
+
+<textarea  id="test" value="{{comment.text}}"  style="border: 0px" disabled></textarea>
+
+
+
+
     </div>
   </li>
 
@@ -35,7 +41,7 @@
     </li>
 
     <li>
-																<span class="like" data-toggle="tooltip" title="update">
+																<span (click)="changeComment(comment)" class="like" data-toggle="tooltip" title="update">
                                    <i class="ti-pencil-alt"></i>
 																</span>
     </li>
@@ -44,7 +50,11 @@
                   <span class="like" data-toggle="tooltip" title="delete">
                     <i (click)="deleteComment(comment.id)" class="ti-trash"> </i>
                   </span>
+
     </li>
+
+
+
 
   </ul>
   <br> <br>

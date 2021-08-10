@@ -18,7 +18,7 @@ export class CommentService {
 
   //sua comment
   updateComment(id:any, commentPostCreate: any): Observable<any> {
-    return this.http.put(API_URL + '/api/comment/update/' + `${id}`, id, commentPostCreate)
+    return this.http.put(API_URL + '/api/comment/update/' + `${id}`, commentPostCreate)
   }
 
   //xoa comment

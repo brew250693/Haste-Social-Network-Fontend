@@ -45,6 +45,7 @@ import { ViewInforFriendComponent } from './components/view-infor-friend/view-in
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
 import { ResultSearchComponent } from './components/result-search/result-search.component';
+import { EditCommentComponent } from './components/comment/edit-comment/edit-comment.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { ResultSearchComponent } from './components/result-search/result-search.
       ViewInforFriendComponent,
       UpdatePostComponent,
       ResultSearchComponent,
+      EditCommentComponent,
 
 
   ],

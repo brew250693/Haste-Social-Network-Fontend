@@ -5,6 +5,10 @@ import { TokenService } from 'src/app/services/token/token.service';
 import { UploadService } from 'src/app/services/upload/upload.service';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from "sweetalert2";
+import {angularMajorCompatGuarantee} from "@angular/cli/src/commands/update/schematic";
+import {UpdatePostComponent} from "../update-post/update-post.component";
+import {MatDialog} from "@angular/material/dialog";
+import {EditCommentComponent} from "./edit-comment/edit-comment.component";
 
 @Component({
   selector: 'app-comment',
@@ -21,6 +25,11 @@ export class CommentComponent implements OnInit {
   num = 0;
   number = 0;
 
+  //
+
+
+
+
   @Input()
   postIdUpdate : any;
   listCommentByIdPost:any;
@@ -31,12 +40,13 @@ export class CommentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private routers: Router,
     private uploadService:UploadService,
-    private commentService: CommentService
-
+    private commentService: CommentService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
     this.getListCommentByIdPost(this.id);
+
   }
 
   ngOnChanges(change: SimpleChanges) {
@@ -92,4 +102,20 @@ export class CommentComponent implements OnInit {
     )
   }
 
+
+  changeComment(comment:any) {
+    const dialogNew = this.dialog.open(EditCommentComponent, {
+      width: '250px',
+      height: '250px',
+      data: {
+        comment: comment
+      }
+    });
+    dialogNew.afterClosed().subscribe(result => {
+      // console.log(result);
+      if (result) {
+
+      }
+    });
+  }
 }

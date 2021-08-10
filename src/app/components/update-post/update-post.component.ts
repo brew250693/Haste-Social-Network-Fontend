@@ -50,7 +50,8 @@ export class UpdatePostComponent implements OnInit {
         icon:"success",
         confirmButtonColor: "#3bc8e7",
       })
-      location.reload();
+      // location.reload();
+      this.dialogRef.close();
     })
   };
 
