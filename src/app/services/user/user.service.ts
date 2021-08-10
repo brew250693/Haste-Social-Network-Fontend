@@ -33,4 +33,8 @@ export class UserService {
     return this.httpClient.get<any[]>(API_URL + '/api/user/allUserNoStatus');
   }
 
+  getUSerByID(id:any): Observable<any>{
+    return this.httpClient.get<any>(API_URL + '/api/user/viewInfor/' + id)
+  }
+
 }

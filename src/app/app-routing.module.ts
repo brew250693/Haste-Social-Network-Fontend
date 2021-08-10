@@ -12,6 +12,7 @@ import {DeletePostComponent} from './components/delete-post/delete-post.componen
 import {LogOutComponent} from "./components/log-out/log-out.component";
 import { FriendsRequestsComponent } from './components/friends-requests/friends-requests.component';
 import { FriendReceivedComponent } from './components/friend-received/friend-received.component';
+import { ViewInforFriendComponent } from './components/view-infor-friend/view-infor-friend.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -29,7 +30,8 @@ const routes: Routes = [
   // { path: 'file', component: UploadImageComponent},
   { path: 'delete-post/:id' ,component: DeletePostComponent},
   { path: 'friends-requests' , component:FriendsRequestsComponent},
-  { path: 'friends-received', component: FriendReceivedComponent}
+  { path: 'friends-received', component: FriendReceivedComponent},
+  { path: 'profile/friend/:id', component: ViewInforFriendComponent}
 
 
 ];

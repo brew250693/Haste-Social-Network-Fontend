@@ -167,7 +167,7 @@
           <div class="col-lg-2 col-sm-3">
             <div class="user-avatar">
               <figure>
-                <img [src]="currentUser.image" alt="">
+                <img [src]="myFriend.image" alt="">
                 <form class="edit-phto">
                   <i class="fa fa-camera-retro"></i>
                   <label class="fileContainer">
@@ -182,7 +182,7 @@
             <div class="timeline-info">
               <ul>
                 <li class="admin-name">
-                  <h5>{{currentUser.name}}</h5>
+                  <h5>{{myFriend.username}}</h5>
                 </li>
                 <li>
                   <a class="active" [routerLink]="['/profile']" routerLinkActive="router-link-active" data-ripple="">time line</a>
@@ -214,30 +214,30 @@
                       <li>
                         <div class="activity-meta">
                           <i>name</i>
-                          <span>{{currentUser.username}}</span>
+                          <span>{{myFriend.username}}</span>
                         </div>
                         <li>
                           <div class="activity-meta">
                             <i>email</i>
-                            <span>{{currentUser.email}}</span>
+                            <span>{{myFriend.email}}</span>
                           </div>
                         </li>
                         <li>
                           <div class="activity-meta">
                             <i>phone</i>
-                            <span>{{currentUser.phone}}</span>
+                            <span>{{myFriend.phone}}</span>
                           </div>
                         </li>
                         <li>
                           <div class="activity-meta">
                             <i>birthday</i>
-                            <span>{{currentUser.birthday}}</span>
+                            <span>{{myFriend.birthday}}</span>
                           </div>
                         </li>
                         <li>
                           <div class="activity-meta">
                             <i>address</i>
-                            <span>{{currentUser.city}}</span>
+                            <span>{{myFriend.city}}</span>
                           </div>
                         </li>
                     </ul>
@@ -285,42 +285,18 @@
               <div class="col-lg-6">
                 <div class="loadMore">
                   <div class="central-meta item">
-                    <div class="new-postbox">
-                      <figure>
-                        <img [src]="currentUser.image" alt="">
-                      </figure>
-                      <div class="newpst-input">
-                        <form [formGroup]="postForm" (ngSubmit)="ngSubmit()" >
-                          <textarea formControlName= "description" rows="2" placeholder="write something"></textarea>
-                          <div class="attachments">
-                            <ul>
-                              <li >
-                                <i class="fa fa-image"></i>
-                                <label class="fileContainer" >
-                                  <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)" ></app-upload-image>
 
-                                </label>
-                              </li>
-
-                              <li>
-                                <button type="submit">Post</button>
-                              </li>
-                            </ul>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
                   </div>
 
-                  <!-- list post -->
-                  <div *ngIf="postList != null">
+
+                   <div *ngIf="postListFriend != null">
 
 
-                  <div class="central-meta item" *ngFor="let post of postList">
+                  <div class="central-meta item" *ngFor="let post of postListFriend">
                     <div class="user-post">
                       <div class="friend-info">
                         <figure>
-                          <img [src]="currentUser.image" alt="">
+                          <img [src]="myFriend.image" alt="">
                         </figure>
                         <div class="friend-name">
                           <ins><a href="/profile" title="">{{post.user.username}}</a></ins>
@@ -354,11 +330,6 @@
 																</span>
                               </li>
 
-                              <li>
-																<span class="like" data-toggle="tooltip" title="delete">
-                                 <i class="ti-trash" (click)="deletepost(post.id)"></i>
-																</span>
-                              </li>
                               <app-comment (numberChange)="getListComment($event)"  *ngIf="isComment" [postIdUpdate]="postIdUpdate" [id]=post.id></app-comment>
                             </ul>
 
@@ -380,7 +351,7 @@
                     </div>
                   </div>
 
-                  </div>
+                  <!-- </div> -->
 
                 </div>
               </div>
@@ -389,7 +360,7 @@
         </div>
       </div>
     </div>
-  </section>
+  <!-- </section> -->
 
   <footer>
     <div class="container">
