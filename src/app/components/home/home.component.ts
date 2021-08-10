@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   formavt: any = {};
   formmp3: any = {};
   listCommentByIdPost:any[]
+  username:any
 
   // Upload
   message:string;
@@ -42,16 +43,16 @@ export class HomeComponent implements OnInit {
   name : String;
   postIdUpdate: any;
 
-
-
   isComment : boolean = false;
   clickIsComment(){
     this.isComment = !this.isComment;
   }
+  checkSearch = false;
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
     image: new FormControl(),
+    mp3url: new FormControl(),
   })
 
   constructor(private tokenService: TokenService,
@@ -180,6 +181,15 @@ export class HomeComponent implements OnInit {
 
       }
     });
+  }
+  submitSearch(){
+    this.checkSearch = true;
+  }
+
+  searchUserByName(username:any){
+      this.username = username;
+      console.log(this.username)
+      this.submitSearch()
   }
 
 }

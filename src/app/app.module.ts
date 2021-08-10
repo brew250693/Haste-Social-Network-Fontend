@@ -44,6 +44,8 @@ import { LikecommentsComponent } from './components/likecomments/likecomments.co
 import { ViewInforFriendComponent } from './components/view-infor-friend/view-infor-friend.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
+import { ResultSearchComponent } from './components/result-search/result-search.component';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { UpdatePostComponent } from './components/update-post/update-post.compon
       LikecommentsComponent,
       ViewInforFriendComponent,
       UpdatePostComponent,
+      ResultSearchComponent,
 
 
   ],

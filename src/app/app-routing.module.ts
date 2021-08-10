@@ -13,6 +13,7 @@ import {LogOutComponent} from "./components/log-out/log-out.component";
 import { FriendsRequestsComponent } from './components/friends-requests/friends-requests.component';
 import { FriendReceivedComponent } from './components/friend-received/friend-received.component';
 import { ViewInforFriendComponent } from './components/view-infor-friend/view-infor-friend.component';
+import { ResultSearchComponent } from './components/result-search/result-search.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'delete-post/:id' ,component: DeletePostComponent},
   { path: 'friends-requests' , component:FriendsRequestsComponent},
   { path: 'friends-received', component: FriendReceivedComponent},
-  { path: 'profile/friend/:id', component: ViewInforFriendComponent}
+  { path: 'profile/friend/:id', component: ViewInforFriendComponent},
+  { path: 'search/:username', component:ResultSearchComponent}
 
 
 ];
