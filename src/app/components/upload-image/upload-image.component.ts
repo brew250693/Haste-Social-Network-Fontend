@@ -43,6 +43,7 @@ export class UploadImageComponent implements OnInit {
       })
     console.log(this.downloadURL)
   }
+
   // onUpLoad(){
   //   this.checkUploadAvatar = true;
   //   const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB

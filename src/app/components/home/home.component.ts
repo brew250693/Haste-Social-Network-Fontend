@@ -12,6 +12,8 @@ import {ReversePipe} from "ngx-pipes";
 import { CommentService } from 'src/app/services/comment/comment.service';
 import {LikepostService} from "../../services/post/likepost.service";
 import {LikePostComponent} from "../like-post/like-post.component";
+import {UpdatePostComponent} from "../update-post/update-post.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-home',
@@ -40,6 +42,8 @@ export class HomeComponent implements OnInit {
   name : String;
   postIdUpdate: any;
 
+
+
   isComment : boolean = false;
   clickIsComment(){
     this.isComment = !this.isComment;
@@ -48,7 +52,6 @@ export class HomeComponent implements OnInit {
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
     image: new FormControl(),
-    mp3url: new FormControl(),
   })
 
   constructor(private tokenService: TokenService,
@@ -56,7 +59,8 @@ export class HomeComponent implements OnInit {
               private postService: PostService,
               private afStorage: AngularFireStorage,
               private uploadService:UploadService,
-              private commentService: CommentService)
+              private commentService: CommentService,
+              private dialog: MatDialog,)
   {
     this.getUserPrincipal();
   }
@@ -159,6 +163,23 @@ export class HomeComponent implements OnInit {
         })
       }
     )
-
   }
+
+  showDialog(post:any){
+    // console.log(post);
+    const dialogRef = this.dialog.open(UpdatePostComponent, {
+      width: '500px',
+      height: '500px',
+      data: {
+        post: post
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(result);
+      if (result) {
+
+      }
+    });
+  }
+
 }

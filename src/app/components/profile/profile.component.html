@@ -205,9 +205,15 @@
                                 <i class="fa fa-image"></i>
                                 <label class="fileContainer" >
                                   <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)" ></app-upload-image>
-
                                 </label>
                               </li>
+
+<!--                              <li >-->
+<!--                                <i class="fa fa-music"></i>-->
+<!--                                <label class="fileContainer" >-->
+<!--                                  <app-upload-file (giveURLtoCreate)="onchangeMp3($event)" ></app-upload-file>-->
+<!--                                </label>-->
+<!--                              </li>-->
 
                               <li>
                                 <button type="submit">Post</button>
@@ -240,7 +246,7 @@
                         </div>
                         <div class="post-meta">
                           <div class="linked-image align-left">
-                            <a href="#" title=""><img src="{{post.image}}" alt=""></a>
+                            <a href="#" title=""><img src="{{post.image}}" alt=""></a><br>
                           </div>
                           <div class="we-video-info">
                             <ul>
@@ -252,12 +258,11 @@
                               </li>
                               <li>
                                 <app-like-post [id]=post.id></app-like-post>
-
                               </li>
 
                               <li>
-																<span class="like" data-toggle="tooltip" title="update">
-                                   <i class="ti-pencil-alt"></i>
+																<span class="like" data-toggle="tooltip" title="update" (click)="showDialog(post)">
+                                   <i class="ti-pencil-alt" ></i>
 																</span>
                               </li>
 
