@@ -1,11 +1,11 @@
 <form [formGroup]="postForm" (ngSubmit)="ngSubmit()">
   <textarea formControlName="description" rows="2" placeholder="write something"></textarea>
       <img *ngIf="!hidenimage" src="{{post.image}}" alt="">
-    <ul>
-      <li>
+    <ul class="followers">
+      <li class="list-unstyled">
           <app-upload-image (giveURLtoCreate)="onchangeAvatar($event)"></app-upload-image>
       </li>
-      <li>
+      <li class="list-unstyled">
         <button type="submit">Update</button>
       </li>
     </ul>

@@ -12,9 +12,9 @@
   <div class="col-sm-5">
     <input type="file" (change)="onFileChaged($event)"><br>
   </div>
-  <div class="col-sm-3">
-    <div *ngIf="downloadURL" style="margin-top: 50px">
-      <img [src]="downloadURL" style="width: auto; height: auto">
+  <div class="friend">
+    <div *ngIf="downloadURL" style="margin-top: 50px; margin-bottom: 50px">
+      <img [src]="downloadURL" >
     </div>
   </div>
 </div>
