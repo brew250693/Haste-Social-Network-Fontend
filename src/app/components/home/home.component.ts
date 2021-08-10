@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   formavt: any = {};
   formmp3: any = {};
   listCommentByIdPost:any[]
+  username:any
 
   // Upload
   message:string;
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
   clickIsComment(){
     this.isComment = !this.isComment;
   }
+  checkSearch = false;
 
   postForm: FormGroup= new FormGroup({
     description: new FormControl(),
@@ -161,4 +163,14 @@ export class HomeComponent implements OnInit {
     )
 
   }
+  submitSearch(){
+    this.checkSearch = true;
+  }
+
+  searchUserByName(username:any){
+      this.username = username;
+      console.log(this.username)
+      this.submitSearch()
+  }
+
 }

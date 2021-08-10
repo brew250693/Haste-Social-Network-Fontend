@@ -7,9 +7,9 @@
     </div>
     <div class="top-area">
       <div class="top-search">
-        <form method="post" class="">
-          <input type="text" placeholder="Search Friend" style="width: 250px; height: 40px">
-          <button data-ripple><i class="ti-search"></i></button>
+        <form method="post" class="" >
+          <input type="text" placeholder="Search Friend" style="width: 250px; height: 40px" #element >
+          <button data-ripple (click) = "searchUserByName(element.value)"><i class="ti-search"></i></button>
         </form>
       </div>
       <ul class="main-menu">
@@ -28,7 +28,7 @@
           </ul>
         </li>
 
-        <img [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px">
+        <img [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px"> &nbsp;
         <a href="/profile">{{currentUser.username}}</a>
 
       </ul>
@@ -88,10 +88,10 @@
                 </aside>
               </div><!-- sidebar -->
 
-              <div class="col-lg-6">
+              <div class="col-lg-6"  >
                 <div class="loadMore">
                   <div class="central-meta item">
-                    <div class="new-postbox">
+                    <div class="new-postbox"  *ngIf= "!checkSearch">
                       <figure>
                         <img [src]="currentUser.image" alt="">
                       </figure>
@@ -117,7 +117,9 @@
                   </div><!-- add post new box -->
                 </div><!-- centerl meta -->
 
+                <div *ngIf= "checkSearch"><app-result-search [username] = "username" ></app-result-search></div>
                 <!-- list post -->
+                <div *ngIf= "!checkSearch">
                 <div *ngIf="postList!= null">
 
 
@@ -187,6 +189,7 @@
                 </div>
 
                 </div>
+              </div>
 
 
 

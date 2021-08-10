@@ -42,6 +42,7 @@ import { LikePostComponent } from './components/like-post/like-post.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { LikecommentsComponent } from './components/likecomments/likecomments.component';
 import { ViewInforFriendComponent } from './components/view-infor-friend/view-infor-friend.component';
+import { ResultSearchComponent } from './components/result-search/result-search.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ViewInforFriendComponent } from './components/view-infor-friend/view-in
     CreateCommentComponent,
       LikecommentsComponent,
       ViewInforFriendComponent,
+      ResultSearchComponent,
 
 
   ],

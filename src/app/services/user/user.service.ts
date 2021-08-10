@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
+import { FriendsRequestsComponent } from 'src/app/components/friends-requests/friends-requests.component';
+import { UserSearch } from 'src/app/model/UserSearch';
+import { FriendRequest } from 'src/app/model/FriendRequestForm';
 
 
 const API_URL = `${environment.API_URL}`;
@@ -35,6 +38,10 @@ export class UserService {
 
   getUSerByID(id:any): Observable<any>{
     return this.httpClient.get<any>(API_URL + '/api/user/viewInfor/' + id)
+  }
+
+  searchByName(data: FriendRequest): Observable<any[]>{
+    return this.httpClient.post<any[]>(API_URL + '/api/user/search', data)
   }
 
 }
