@@ -38,9 +38,13 @@ export class UpdatePostComponent implements OnInit {
   }
 
   ngSubmit(){
-    this.postForm.value.image = this.formavt.image;
+    if(this.hidenimage) {
+
+      this.postForm.value.image = this.formavt.image;
+      this.post.image = this.postForm.value.image;
+    }
     this.post.description = this.postForm.value.description;
-    this.post.image = this.postForm.value.image;
+
     this.postService.updatePost(this.post, this.post.id).subscribe(upPost =>{
 
       this.message = "Update Post Success"
