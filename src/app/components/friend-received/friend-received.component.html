@@ -170,10 +170,10 @@
                         <li>
                           <div class="nearly-pepls">
                             <figure>
-                              <a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title=""><img [src]="friend.userone.image" alt=""></a>
+                              <a [routerLink]="['/profile/friend',friend.userone.id]" routerLinkActive="router-link-active" title=""><img [src]="friend.userone.image" alt=""></a>
                             </figure>
                             <div class="pepl-info">
-                              <h4><a [routerLink]="['/profile/friend',friend.id]" routerLinkActive="router-link-active" title="">{{friend.userone.username}}</a></h4> <br>
+                              <h4><a [routerLink]="['/profile/friend',friend.userone.id]" routerLinkActive="router-link-active" title="">{{friend.userone.username}}</a></h4> <br>
 
                               <button class="add-butn more-action"  (click) = "Accept(friend.id)" >Accept</button> &nbsp;
                               <button class="add-butn" (click)="Cancel(friend.id)" data-ripple="">Cancel</button>
