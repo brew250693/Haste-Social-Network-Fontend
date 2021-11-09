@@ -1,0 +1,364 @@
+
+
+
+
+<body>
+
+<div class="theme-layout">
+  <div class="topbar stick">
+    <div class="logo">
+      <a title="" [routerLink]="['/home']" routerLinkActive="router-link-active"><img src="assets/images/logo.png" alt=""></a>
+    </div>
+    <div class="top-area">
+      <div class="top-search">
+        <form method="post" class="">
+          <input type="text" placeholder="Search Friend" style="width: 250px; height: 40px">
+          <button data-ripple><i class="ti-search"></i></button>
+        </form>
+      </div>
+      <ul class="main-menu">
+        <li>
+          <a href="#" title="">Account settings</a>
+          <ul>
+            <li><a [routerLink]="['/edit-password']" routerLinkActive="router-link-active" title="">Edit-password</a></li>
+            <li><a [routerLink]="['/edit-profile']" routerLinkActive="router-link-active" title="">Edit profile</a></li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="#" title="">More pages</a>
+          <ul>
+            <li><a [routerLink]="['/404']" routerLinkActive="router-link-active" title="">404 error page</a></li>
+            <li><a [routerLink]="['/about']" routerLinkActive="router-link-active" title="">about</a></li>
+          </ul>
+        </li>
+
+        <img  [src]="currentUser?.image" alt="" style="border-radius: 50%; width: 40px"> &nbsp;
+        <a href="/profile">{{currentUser?.username}}</a>
+
+      </ul>
+      <div style="margin-top: 15px">
+        <div style="margin-right: auto"><app-log-out></app-log-out> </div>
+      </div>
+    </div>
+  </div><!-- topbar -->
+
+	<section>
+			<div class="feature-photo">
+				<figure><img src="assets/images/resources/timeline-1.jpg" alt=""></figure>
+				<div class="add-btn">
+				</div>
+				<div class="container-fluid">
+					<div class="row merged">
+						<div class="col-lg-2 col-sm-3">
+							<div class="user-avatar">
+								<figure>
+									<img [src]="currentUser?.image" alt="">
+									<form class="edit-phto">
+										<i class="fa fa-camera-retro"></i>
+										<label class="fileContainer">
+											Edit Display Photo
+											<input type="file"/>
+										</label>
+									</form>
+								</figure>
+							</div>
+						</div>
+						<div class="col-lg-10 col-sm-9">
+							<div class="timeline-info">
+								<ul>
+									<li class="admin-name">
+									  <h5>{{currentUser?.username}}</h5>
+									</li>
+									<li>
+										<a class="" [routerLink]="['/profile']" routerLinkActive="router-link-active" title="" data-ripple="">time line</a>
+										<a class="" [routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">Friend</a>
+                    <a class="" [routerLink]="['/photos']" routerLinkActive="router-link-active" title="" data-ripple="">Photos</a>
+										<a class="" [routerLink]="['/videos']" routerLinkActive="router-link-active" title="" data-ripple="">Videos</a>
+										<a class="" [routerLink]="['/about']" routerLinkActive="router-link-active" title="" data-ripple="">about</a>
+										<a class="" [routerLink]="['/more']" routerLinkActive="router-link-active" data-ripple="">more</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- top area -->
+
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
+							<div class="col-lg-3">
+								<aside class="sidebar static">
+									<div class="widget">
+											<h4 class="widget-title">Shortcuts</h4>
+											<ul class="naves">
+												<li>
+													<i class="ti-clipboard"></i>
+													<a  [routerLink]="['/more']" routerLinkActive="router-link-active" title="">News feed</a>
+												</li>
+												<li>
+													<i class="ti-mouse-alt"></i>
+													<a  [routerLink]="['/inbox']" routerLinkActive="router-link-active" title="">Inbox</a>
+												</li>
+												<li>
+													<i class="ti-image"></i>
+													<a [routerLink]="['/images']" routerLinkActive="router-link-active" title="">images</a>
+												</li>
+												<li>
+													<i class="ti-video-camera"></i>
+													<a  [routerLink]="['/videos']" routerLinkActive="router-link-active" title="">videos</a>
+												</li>
+												<li>
+													<i class="ti-comments-smiley"></i>
+													<a  [routerLink]="['/message']" routerLinkActive="router-link-active" title="">Messages</a>
+												</li>
+												<li>
+													<i class="ti-bell"></i>
+													<a  [routerLink]="['/notification']" routerLinkActive="router-link-active" title="">Notifications</a>
+                        </li>
+												<li>
+													<i class="ti-power-off"></i>
+													<a  [routerLink]="['/logout']" routerLinkActive="router-link-active" title="">Logout</a>
+												</li>
+											</ul>
+										</div><!-- Shortcuts -->
+
+
+								</aside>
+							</div><!-- sidebar -->
+							<div class="col-lg-6">
+								<div class="central-meta">
+									<div class="frnds">
+										<ul class="nav nav-tabs">
+											 <li class="nav-item"><a class="" [routerLink]="['/friends']" routerLinkActive="router-link-active" title="" data-ripple="">My Friends</a></li>
+											 <li class="nav-item"><a class="" [routerLink]="['/friends-requests']" routerLinkActive="router-link-active" title="" data-ripple="">Friend request sent</a></li>
+                       <li class="nav-item"><a class="" [routerLink]="['/friends-received']" routerLinkActive="router-link-active" title="" data-ripple="">Friend request received</a></li>
+										</ul>
+
+										<!-- Tab panes -->
+
+                    <!-- danh sach ban be -->
+										<div class="tab-content">
+										  <div class="tab-pane active fade show " id="frends" >
+											<ul class="nearby-contct" *ngFor="let friend of listFriend">
+											<li>
+												<div class="nearly-pepls">
+													<figure>
+														<a [routerLink]="['/profile/friend',friend.usertwo.id]" routerLinkActive="router-link-active" title=""><img [src]="friend.usertwo.image" alt=""></a>
+													</figure>
+													<div class="pepl-info">
+                            <!-- <span *ngIf="friend.userone.username.equal(currentUser.username)">asasas</span> -->
+
+														<h4><a [routerLink]="['/profile/friend',friend.usertwo.id]" routerLinkActive="router-link-active" title="">{{friend.usertwo.username}}</a></h4> <br>
+
+                            <button class="add-butn more-action"  (click) = "unFriend(friend.id)" >Unfriend</button> &nbsp;
+                            <button class="add-butn" (click)="block(friend.usertwo.id)" data-ripple="">Block</button>
+													</div>
+												</div>
+											</li>
+										</ul>
+
+
+                    <!-- danh sach accept -->
+											<div class="lodmore"><button class="btn-view btn-load-more"></button></div>
+										  </div>
+										  <div class="tab-pane fade" id="frends-req" >
+											<ul class="nearby-contct">
+
+										</ul>
+											  <button class="btn-view btn-load-more"></button>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div><!-- centerl meta -->
+
+
+              <!-- goi y ket ban -->
+
+							<div class="col-lg-3">
+								<aside class="sidebar static">
+									<div class="widget">
+										<h4 class="widget-title">Friend Suggestion</h4>
+
+										<ul class="followers" *ngFor="let fsg of listFriendSuggestion">
+											<li>
+												<figure><img [src]="fsg.image" alt=""></figure>
+												<div class="friend-meta">
+													<h3><a [routerLink]="['/profile/friend',fsg.id]" routerLinkActive="router-link-active" title="">{{fsg.username}}</a></h3>
+													<button  class="add-butn more-action" (click) = "addFriend(fsg.username)">Add Friend</button>
+												</div>
+											</li>
+										</ul>
+
+									</div><!-- who's following -->
+								</aside>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-4">
+					<div class="widget">
+						<div class="foot-logo">
+							<div class="logo">
+								<a href="index-2.html" title=""><img src="images/logo.png" alt=""></a>
+							</div>
+							<p>
+								The trio took this simple idea and built it into the world’s leading carpooling platform.
+							</p>
+						</div>
+						<ul class="location">
+							<li>
+								<i class="ti-map-alt"></i>
+								<p>33 new montgomery st.750 san francisco, CA USA 94105.</p>
+							</li>
+							<li>
+								<i class="ti-mobile"></i>
+								<p>+1-56-346 345</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4">
+					<div class="widget">
+						<div class="widget-title"><h4>follow</h4></div>
+						<ul class="list-style">
+							<li><i class="fa fa-facebook-square"></i> <a href="https://web.facebook.com/shopcircut/" title="">facebook</a></li>
+							<li><i class="fa fa-twitter-square"></i><a href="https://twitter.com/login?lang=en" title="">twitter</a></li>
+							<li><i class="fa fa-instagram"></i><a href="https://www.instagram.com/?hl=en" title="">instagram</a></li>
+							<li><i class="fa fa-google-plus-square"></i> <a href="https://plus.google.com/discover" title="">Google+</a></li>
+							<li><i class="fa fa-pinterest-square"></i> <a href="https://www.pinterest.com/" title="">Pintrest</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4">
+					<div class="widget">
+						<div class="widget-title"><h4>Navigate</h4></div>
+						<ul class="list-style">
+							<li><a href="about.html" title="">about us</a></li>
+							<li><a href="contact.html" title="">contact us</a></li>
+							<li><a href="terms.html" title="">terms & Conditions</a></li>
+							<li><a href="#" title="">RSS syndication</a></li>
+							<li><a href="sitemap.html" title="">Sitemap</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4">
+					<div class="widget">
+						<div class="widget-title"><h4>useful links</h4></div>
+						<ul class="list-style">
+							<li><a href="#" title="">leasing</a></li>
+							<li><a href="#" title="">submit route</a></li>
+							<li><a href="#" title="">how does it work?</a></li>
+							<li><a href="#" title="">agent listings</a></li>
+							<li><a href="#" title="">view All</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-4">
+					<div class="widget">
+						<div class="widget-title"><h4>download apps</h4></div>
+						<ul class="colla-apps">
+							<li><a href="https://play.google.com/store?hl=en" title=""><i class="fa fa-android"></i>android</a></li>
+							<li><a href="https://www.apple.com/lae/ios/app-store/" title=""><i class="ti-apple"></i>iPhone</a></li>
+							<li><a href="https://www.microsoft.com/store/apps" title=""><i class="fa fa-windows"></i>Windows</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer><!-- footer -->
+	<div class="bottombar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+					<i><img src="images/credit-cards.png" alt=""></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="side-panel">
+			<h4 class="panel-title">General Setting</h4>
+			<form method="post">
+				<div class="setting-row">
+					<span>use night mode</span>
+					<input type="checkbox" id="nightmode1"/>
+					<label for="nightmode1"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Notifications</span>
+					<input type="checkbox" id="switch22" />
+					<label for="switch22"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Notification sound</span>
+					<input type="checkbox" id="switch33" />
+					<label for="switch33"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>My profile</span>
+					<input type="checkbox" id="switch44" />
+					<label for="switch44"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Show profile</span>
+					<input type="checkbox" id="switch55" />
+					<label for="switch55"  data-off-label="OFF"></label>
+				</div>
+			</form>
+			<h4 class="panel-title">Account Setting</h4>
+			<form method="post">
+				<div class="setting-row">
+					<span>Sub users</span>
+					<input type="checkbox" id="switch66" />
+					<label for="switch66"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>personal account</span>
+					<input type="checkbox" id="switch77" />
+					<label for="switch77"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Business account</span>
+					<input type="checkbox" id="switch88" />
+					<label for="switch88"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Show me online</span>
+					<input type="checkbox" id="switch99" />
+					<label for="switch99"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Delete history</span>
+					<input type="checkbox" id="switch101" />
+					<label for="switch101"  data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Expose author name</span>
+					<input type="checkbox" id="switch111" />
+					<label for="switch111"  data-off-label="OFF"></label>
+				</div>
+			</form>
+		</div><!-- side panel -->
+
+	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/map-init.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+
+</body>
+

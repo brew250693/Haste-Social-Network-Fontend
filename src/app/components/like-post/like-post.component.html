@@ -1,0 +1,22 @@
+<a (click)="likeAPost(id)" *ngIf="!liked">
+<!--  <i class="bi bi-heart"></i>-->
+  <span class="like" data-toggle="tooltip" title="like">
+
+    																	<i class="ti-heart"></i>
+      <ins>{{likeposts}}</ins>
+  </span>
+<!--  <p style="margin-left: 25px; margin-top: -18px"></p>-->
+
+</a>
+<a (click)="unLikeAPost(id) " *ngIf="liked">
+<!--  <i class="bi bi-heart-fill"></i>-->
+<!--  <i class="bi bi-heart-fill"></i>-->
+  <span class="like" data-toggle="tooltip" title="like">
+
+    																	<i class="ti-heart-broken"></i>
+      <ins>{{likeposts}}</ins>
+  </span>
+  <!--  <p style="margin-left: 25px; margin-top: -18px"></p>-->
+
+
+</a>

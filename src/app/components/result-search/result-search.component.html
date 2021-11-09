@@ -1,0 +1,11 @@
+
+
+      <ul class="followers" *ngFor="let fsg of userSearchList"  >
+        <li class="list-unstyled">
+          <figure><img [src]="fsg.image" alt=""></figure>
+          <div class="friend-meta">
+            <h3><a [routerLink]="['/profile/friend',fsg.id]" routerLinkActive="router-link-active" title="">{{fsg.username}}</a></h3>
+            <!-- <button  class="add-butn more-action" (click) = "addFriend(fsg.username)">Add Friend</button> -->
+          </div>
+        </li>
+      </ul>

@@ -1,0 +1,62 @@
+<!--<a (click)="getListCommentByIdPost(id)" >-->
+<!--    <span class="comment" data-toggle="tooltip" title="Comments">-->
+<!--      <i class="fa fa-comments-o"></i>-->
+<div *ngIf="listCommentByIdPost != null">
+
+  &nbsp;
+<ul *ngFor="let comment of listCommentByIdPost">
+  <li>
+    <div class="comet-avatar">
+      <img [src]="comment.user.image" alt="">
+    </div>
+    <div class="we-comment">
+      <div class="coment-head">
+        <h5><a href="/profile" title="">{{comment.user.username}}</a></h5>
+        <span>{{comment.createdDate | date: 'short'}}</span>
+      </div>
+
+
+
+<textarea  id="test" value="{{comment.text}}"  style="border: 0px" disabled></textarea>
+
+
+
+
+    </div>
+  </li>
+
+  <ul>
+    <li>
+                  <span class="comment" data-toggle="tooltip" title="Comments">
+                    <!-- <i class="fa fa-comments-o"></i> -->
+                    <!-- <ins>{{post.comment_count}}</ins></span> -->
+                  </span>
+    </li>
+    <li>
+      <app-likecomments [id]="comment.id"></app-likecomments>
+<!--                  <span class="like" data-toggle="tooltip" title="like">-->
+<!--                    <i class="ti-heart"></i>-->
+<!--                    &lt;!&ndash; <ins>{{post.like_count}}</ins> &ndash;&gt;-->
+<!--                  </span>-->
+    </li>
+
+    <li>
+																<span (click)="changeComment(comment)" class="like" data-toggle="tooltip" title="update">
+                                   <i class="ti-pencil-alt"></i>
+																</span>
+    </li>
+
+    <li>
+                  <span class="like" data-toggle="tooltip" title="delete">
+                    <i (click)="deleteComment(comment.id)" class="ti-trash"> </i>
+                  </span>
+
+    </li>
+
+
+
+
+  </ul>
+  <br> <br>
+</ul>
+</div>

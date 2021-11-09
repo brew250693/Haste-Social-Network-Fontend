@@ -1,0 +1,6 @@
+<form  [formGroup] = "formComment" class="form-group" style="margin-top: 50px" (submit)="ngSubmit()">
+  <textarea class="form-control"  formControlName="textare" value="{{comment.text}}">
+  </textarea>
+    &nbsp;&nbsp;
+  <button type="submit" class="btn-block">update</button>
+</form>
